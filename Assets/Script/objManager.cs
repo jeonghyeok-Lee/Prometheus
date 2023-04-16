@@ -1,72 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using System;
+using System.IO;
+using JsonSetting;
 
 
 public class objManager : MonoBehaviour
 {
     public GameObject point;    // 하나의 점 역할을 수행할 객체
+    public GameObject middle;    // 
 
     private GameObject instance; // 생성한 포인트들을 가지고 있을 객체
 
-    /// <summary>
-    /// 
-    /// </summary>
-    private float[] angle;         // 각도
-    private float[] distance;       // 거리
-    private float[] quality;        // 품질
+    private Vector3 playerPos;
+    private Vector3 playerDir;
+    private Vector3 spawnPos;
+
+    private ScanDataArray myData;
 
     public float limitTime = 60;
     private float currTime;
-    private float nowTime = 0;
 
+    float y;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        FileStream test = new FileStream(@"..\Prometheus\Assets\data\3.txt", FileMode.Open);
-        StreamReader streamReader = new StreamReader(test);
-        string value = "";
-        string[] str = { };
-
-        int count = 867;
-        int i = 0;          // 메모장의 행의 총 개수
-
-        angle = new float[count];
-        distance = new float[count];
-        quality = new float[count];
-
-        while (!streamReader.EndOfStream)
-        {
-            value = streamReader.ReadLine();
-            if (i > 2)
-            {
-                str = value.Split(' ');
-
-                angle[i-3] = float.Parse(str[0]);
-                distance[i - 3] = float.Parse(str[1])*0.01f;
-                quality[i - 3] = float.Parse(str[2]);
-
-            }
-            i++;
-        }
-        streamReader.Close();
-
-/*        for (int a = 0; a < count; a += 2)
-        {
-            GameObject instance = Instantiate(point);
-            Debug.Log(distance[a] + " " + distance[a] * Math.Sin(angle[a]));
-            float x = distance[a] * Mathf.Cos(angle[a] * (Mathf.PI / 180.0f));
-            float y = distance[a] * Mathf.Sin(angle[a] * (Mathf.PI / 180.0f));
-            instance.transform.position = new Vector3((float)x, 0, -(float)y);
-
-  *//*          Debug.Log($"{x},{y}");*//*  
-
-        }*/
-
+        LoadJson ldJson = new LoadJson("json/data");        // json 데이터를 로드
+        myData = ldJson.Data;                               // json 데이터 가져오기
 
     }
 
@@ -74,28 +36,28 @@ public class objManager : MonoBehaviour
     void Update()
     {
 
-        if(currTime > limitTime)        // 현재 시간이 제한 시간보다 큰 경우
+        if (currTime > limitTime)        // 현재 시간이 제한 시간보다 큰 경우
         {
-/*            currTime = 0;*/
+            currTime = 0;
 
         }
-        else{
+        else
+        {
             currTime += Time.deltaTime;
 
-
-            if (Mathf.Round(currTime) > nowTime/2)
+            y = (float)middle.transform.position.y + .1f;
+            for (int i = 0; i < myData.data.Length; i += 2)
             {
-                nowTime = Mathf.Round(currTime);
-                for (int i = 0; i < 867; i +=2)
-                {
-                    instance = Instantiate(point);
-                    float x = distance[i] * Mathf.Cos(angle[i] * (Mathf.PI / 180.0f));
-                    float y = distance[i] * Mathf.Sin(angle[i] * (Mathf.PI / 180.0f));
-                    instance.transform.position = new Vector3((float)x, currTime, -(float)y);
-                }
-                Debug.Log($"{Mathf.Round(currTime)} {currTime}");
+                middle.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
+                middle.transform.position = new Vector3((float)middle.transform.position.x, y, (float)middle.transform.position.z);     // y축 값 추가를 위해 객체의 position값 변경
+                playerPos = middle.transform.position;                                                                                  // 현재 플레이어 위치
+                playerDir = middle.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
+                playerDir *= float.Parse(myData.data[i].distance) * 0.01f;
+                spawnPos = playerPos + playerDir;
+                instance = Instantiate(point);
+                instance.transform.position = spawnPos;
             }
-
+            Debug.Log($"{Mathf.Round(currTime)} {currTime}");
         }
 
     }
