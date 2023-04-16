@@ -45,7 +45,6 @@ public class objManager : MonoBehaviour
         {
             currTime += Time.deltaTime;
 
-            y = (float)middle.transform.position.y + .1f;
             for (int i = 0; i < myData.data.Length; i += 2)
             {
                 middle.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
@@ -57,6 +56,7 @@ public class objManager : MonoBehaviour
                 instance = Instantiate(point);
                 instance.transform.position = spawnPos;
             }
+            y = (float)middle.transform.position.y + .1f;
             Debug.Log($"{Mathf.Round(currTime)} {currTime}");
         }
 
