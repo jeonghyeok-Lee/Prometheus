@@ -18,7 +18,7 @@ namespace FrameCheck
         void Awake()         // 
         {
 
-            int w = Screen.width, h = Screen.height;    // ÇöÀç °ÔÀÓ È­¸éÀÇ Å©±â
+            int w = Screen.width, h = Screen.height;    // í˜„ì¬ ê²Œì„ í™”ë©´ì˜ í¬ê¸°
 
             rect = new Rect(0, 0, w, h * 4 / 100);
 
@@ -31,7 +31,7 @@ namespace FrameCheck
 
         }
 
-        IEnumerator worstReset() //ÄÚ·çÆ¾À¸·Î 15ÃÊ °£°İÀ¸·Î ÃÖÀú ÇÁ·¹ÀÓ ¸®¼ÂÇØÁÜ.
+        IEnumerator worstReset() //ì½”ë£¨í‹´ìœ¼ë¡œ 15ì´ˆ ê°„ê²©ìœ¼ë¡œ ìµœì € í”„ë ˆì„ ë¦¬ì…‹í•´ì¤Œ.
         {
             while (true)
             {
@@ -47,13 +47,13 @@ namespace FrameCheck
             msec = deltaTime * 1000.0f;
         }
 
-        void OnGUI()                                                                        //¼Ò½º·Î GUI Ç¥½Ã.
+        void OnGUI()                                                                        //ì†ŒìŠ¤ë¡œ GUI í‘œì‹œ.
         {
 
 /*            msec = deltaTime * 1000.0f;*/
-/*            fps = 1.0f / deltaTime;                                                         //ÃÊ´ç ÇÁ·¹ÀÓ - 1ÃÊ¿¡*/
+/*            fps = 1.0f / deltaTime;                                                         //ì´ˆë‹¹ í”„ë ˆì„ - 1ì´ˆì—*/
 
-            if (fps < worstFps)                                                             //»õ·Î¿î ÃÖÀú fps°¡ ³ª¿Ô´Ù¸é worstFps ¹Ù²ãÁÜ.
+            if (fps < worstFps)                                                             //ìƒˆë¡œìš´ ìµœì € fpsê°€ ë‚˜ì™”ë‹¤ë©´ worstFps ë°”ê¿”ì¤Œ.
                 worstFps = fps;
             text = msec.ToString("F1") + "ms (" + fps.ToString("F1") + ") //worst : " + worstFps.ToString("F1");
             GUI.Label(rect, text, style);

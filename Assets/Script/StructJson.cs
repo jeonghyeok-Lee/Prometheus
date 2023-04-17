@@ -3,7 +3,7 @@ using UnityEngine;
 namespace JsonSetting
 {
     /// <summary>
-    /// Json µ¥ÀÌÅÍ
+    /// Json ë°ì´í„°
     /// </summary>
     [System.Serializable]
     public struct ScanData
@@ -28,9 +28,9 @@ namespace JsonSetting
         }
 
         /// <summary>
-        /// °æ·Î¿¡ ÀÖ´Â json ÆÄÀÏÀ» ÀĞ´Â »ı¼ºÀÚ
+        /// ê²½ë¡œì— ìˆëŠ” json íŒŒì¼ì„ ì½ëŠ” ìƒì„±ì
         /// </summary>
-        /// <param name="path">json ÆÄÀÏÀÌ ÀÖ´Â »ó´ë °æ·Î</param>
+        /// <param name="path">json íŒŒì¼ì´ ìˆëŠ” ìƒëŒ€ ê²½ë¡œ</param>
         public LoadJson(string path)
         {
             TextAsset loadedJson = Resources.Load<TextAsset>(path);

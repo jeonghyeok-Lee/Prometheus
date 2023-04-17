@@ -8,32 +8,35 @@ using JsonSetting;
 
 public class objManager : MonoBehaviour
 {
-    public GameObject point;                                // ÇÏ³ªÀÇ Á¡ ¿ªÇÒÀ» ¼öÇàÇÒ °´Ã¼
+    public GameObject point;                                // í•˜ë‚˜ì˜ ì  ì—­í• ì„ ìˆ˜í–‰í•  ê°ì²´
 /*    public GameObject middle;    // */
 
-    private GameObject instance;                            // »ı¼ºÇÑ Æ÷ÀÎÆ®µéÀ» °¡Áö°í ÀÖÀ» °´Ã¼
+    private GameObject instance;                            // ìƒì„±í•œ í¬ì¸íŠ¸ë“¤ì„ ê°€ì§€ê³  ìˆì„ ê°ì²´
 
     private Vector3 playerPos;
     private Vector3 playerDir;
     private Vector3 spawnPos;
 
-    private ScanDataArray myData;
+    private Vector3 mgrPosition;                            // ìì‹ ì˜ í¬ì§€ì…˜ì„ ì €ì¥í•  Vector3ë³€ìˆ˜
+    private float x = 0.0f, y = 0.0f, z = 0.0f;             // x,y,zê°’
+
+    private ScanDataArray myData;                           // JsonDataë¥¼ ê°€ì§„ ë°°ì—´ë³€ìˆ˜
 
     private float deltaTime = 0.0f;
     private float msec;
     private float fps;
 
     public float limitTime = 60;
-    private float currTime;
-    private float nowTime = 0;
+    private float currTime = 0.0f;
+    private int nowTime = 0;
 
-    float y;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        LoadJson ldJson = new LoadJson("json/data");        // json µ¥ÀÌÅÍ¸¦ ·Îµå
-        myData = ldJson.Data;                               // json µ¥ÀÌÅÍ °¡Á®¿À±â
+        LoadJson ldJson = new LoadJson("json/data");        // json ë°ì´í„°ë¥¼ ë¡œë“œ
+        myData = ldJson.Data;                               // json ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
+        mgrPosition = new Vector3();
     }
 
     // Update is called once per frame
@@ -43,7 +46,9 @@ public class objManager : MonoBehaviour
         fps = 1.0f / deltaTime;
         msec = deltaTime * 1000.0f;
 
-        if (currTime > limitTime)        // ÇöÀç ½Ã°£ÀÌ Á¦ÇÑ ½Ã°£º¸´Ù Å« °æ¿ì
+
+
+        if (currTime > limitTime)        // í˜„ì¬ ì‹œê°„ì´ ì œí•œ ì‹œê°„ë³´ë‹¤ í° ê²½ìš°
         {
             /*currTime = 0;*/
         }
@@ -51,15 +56,14 @@ public class objManager : MonoBehaviour
         {
             currTime += Time.deltaTime;
 
-            if (fps < 15)                                                                   // ÇÁ·¹ÀÓÀÌ 15ÀÌÇÏ·Î ¶³¾îÁú °æ¿ì
+            if (fps < 15)                                                                   // í”„ë ˆì„ì´ 15ì´í•˜ë¡œ ë–¨ì–´ì§ˆ ê²½ìš°
             {           
-                if (Mathf.Round(currTime) > nowTime)                                        // 1ÃÊ¸¶´Ù »ı¼º                    
+                if (Mathf.Round(currTime) > nowTime)                                        // 1ì´ˆë§ˆë‹¤ ìƒì„±                    
                 {
-                    nowTime = Mathf.Round(currTime);
+                    nowTime = (int)Math.Round(currTime);
                     createPoint();
                 }
 
-/*            Debug.Log($"{Mathf.Round(currTime)} {currTime}");*/
             }
             else
             {
@@ -67,21 +71,27 @@ public class objManager : MonoBehaviour
             }
 
         }
+        Debug.Log($"{Mathf.Round(currTime)} {currTime}");
 
     }
 
 
     /// <summary>
-    /// Æ÷ÀÎÆ® ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇÏ´Â °úÁ¤À» ÇÔ¼ö·Î ¹­¾î¼­ »ç¿ë
+    /// í¬ì¸íŠ¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í•˜ëŠ” ê³¼ì •ì„ í•¨ìˆ˜ë¡œ ë¬¶ì–´ì„œ ì‚¬ìš©
     /// </summary>
     private void createPoint()
     {
         for (int i = 0; i < myData.data.Length; i += 2)
         {
-            this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // Áß½É À§Ä¡ °´Ã¼ÀÇ rotaion°ª º¯°æ
-            this.transform.position = new Vector3((float)this.transform.position.x, y, (float)this.transform.position.z);     // yÃà °ª Ãß°¡¸¦ À§ÇØ °´Ã¼ÀÇ position°ª º¯°æ
-            playerPos = this.transform.position;                                                                                  // ÇöÀç ÇÃ·¹ÀÌ¾î À§Ä¡
-            playerDir = this.transform.forward;                                                                                   // ÇöÀç ÇÃ·¹ÀÌ¾î°¡ ¹Ù¶óº¸´Â ¹æÇâ
+            this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // ì¤‘ì‹¬ ìœ„ì¹˜ ê°ì²´ì˜ rotaionê°’ ë³€ê²½
+
+            mgrPosition.x = (float)this.transform.position.x;
+            mgrPosition.y = y;
+            mgrPosition.z = (float)this.transform.position.z;
+            this.transform.position = mgrPosition;
+
+            playerPos = this.transform.position;                                                                                  // í˜„ì¬ í”Œë ˆì´ì–´ ìœ„ì¹˜
+            playerDir = this.transform.forward;                                                                                   // í˜„ì¬ í”Œë ˆì´ì–´ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥
             playerDir *= float.Parse(myData.data[i].distance) * 0.01f;
             spawnPos = playerPos + playerDir;
             instance = Instantiate(point);
