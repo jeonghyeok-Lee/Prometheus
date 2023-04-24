@@ -56,7 +56,7 @@ public class objManager : MonoBehaviour
         {
             currTime += Time.deltaTime;
 
-            if (fps < 15)                                                                   // 프레임이 15이하로 떨어질 경우
+            if (fps < 25)                                                                   // 프레임이 25이하(자연스러운 움직임을 감지)로 떨어질 경우  
             {           
                 if (Mathf.Round(currTime) > nowTime)                                        // 1초마다 생성                    
                 {
@@ -71,7 +71,7 @@ public class objManager : MonoBehaviour
             }
 
         }
-        Debug.Log($"{Mathf.Round(currTime)} {currTime}");
+        /*Debug.Log($"{Mathf.Round(currTime)} {currTime}");*/
 
     }
 
@@ -97,6 +97,7 @@ public class objManager : MonoBehaviour
             instance = Instantiate(point);
             instance.transform.position = spawnPos;
         }
-        y = (float)this.transform.position.y + .1f;
+        /*        y = (float)this.transform.position.y + .1f;*/
+        y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
     }
 }
