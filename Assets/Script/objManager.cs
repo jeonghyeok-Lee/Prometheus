@@ -11,7 +11,8 @@ public class objManager : MonoBehaviour
     public GameObject point;                                // 하나의 점 역할을 수행할 객체
 /*    public GameObject middle;    // */
 
-    private GameObject instance;                            // 생성한 포인트들을 가지고 있을 객체
+    private GameObject instance;                            // 포인트객체
+    private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
 
     private Vector3 playerPos;
     private Vector3 playerDir;
@@ -30,13 +31,17 @@ public class objManager : MonoBehaviour
     private float currTime = 0.0f;
     private int nowTime = 0;
 
+    private float testTime = 0.0f;
 
+    private int showNum = 0;                                // 현재 활성화된 포인터 개수
 
     private void Awake()
     {
         LoadJson ldJson = new LoadJson("json/data");        // json 데이터를 로드
         myData = ldJson.Data;                               // json 데이터 가져오기
         mgrPosition = new Vector3();
+        instanceList = new List<GameObject>();              // 시작시 리스트 생성
+
     }
 
     // Update is called once per frame
@@ -71,6 +76,17 @@ public class objManager : MonoBehaviour
             }
 
         }
+       
+        if (nowTime > 5)                                                                    // 5초가 지난 이후 현재 오브젝트를 순서대로 활성화
+        {
+            if (instanceList.Count > showNum)
+            {
+                instanceList[showNum].SetActive(true);
+                showNum++;
+            }
+            Debug.Log($"{nowTime} {instanceList.Count} {showNum}");
+        }
+
         /*Debug.Log($"{Mathf.Round(currTime)} {currTime}");*/
 
     }
@@ -81,8 +97,10 @@ public class objManager : MonoBehaviour
     /// </summary>
     private void createPoint()
     {
+
         for (int i = 0; i < myData.data.Length; i += 2)
         {
+
             this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
 
             mgrPosition.x = (float)this.transform.position.x;
@@ -94,8 +112,11 @@ public class objManager : MonoBehaviour
             playerDir = this.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
             playerDir *= float.Parse(myData.data[i].distance) * 0.01f;
             spawnPos = playerPos + playerDir;
-            instance = Instantiate(point);
-            instance.transform.position = spawnPos;
+            instance = Instantiate(point);                                                                                        // 포인트 생성
+            instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
+            instance.transform.position = spawnPos;                                                                               // 위치 설정
+            instanceList.Add(instance);                                                                                           // 리스트에 추가
+/*            Debug.Log(instanceList);*/
         }
         /*        y = (float)this.transform.position.y + .1f;*/
         y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
