@@ -9,7 +9,9 @@ using JsonSetting;
 public class objManager : MonoBehaviour
 {
     public GameObject point;                                // 하나의 점 역할을 수행할 객체
-/*    public GameObject middle;    // */
+    public GameObject middle;                               // 중심을 나타내는 중심점
+
+    private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
 
     private GameObject instance;                            // 포인트객체
     private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
@@ -41,6 +43,14 @@ public class objManager : MonoBehaviour
         myData = ldJson.Data;                               // json 데이터 가져오기
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();              // 시작시 리스트 생성
+
+        // LineRenderer 컴포넌트 생성
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
 
     }
 
@@ -82,9 +92,12 @@ public class objManager : MonoBehaviour
             if (instanceList.Count > showNum)
             {
                 instanceList[showNum].SetActive(true);
+                lineRenderer.positionCount = 2;                                             // 활성화 할때마다 포지션포인트 2개를 생성 하고 세팅
+                lineRenderer.SetPosition(0, middle.transform.position);
+                lineRenderer.SetPosition(1, instanceList[showNum].transform.position);
                 showNum++;
             }
-            Debug.Log($"{nowTime} {instanceList.Count} {showNum}");
+/*            Debug.Log($"{nowTime} {instanceList.Count} {showNum}");*/
         }
 
         /*Debug.Log($"{Mathf.Round(currTime)} {currTime}");*/
