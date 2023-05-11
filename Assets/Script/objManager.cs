@@ -97,10 +97,7 @@ public class objManager : MonoBehaviour
                 lineRenderer.SetPosition(1, instanceList[showNum].transform.position);
                 showNum++;
             }
-/*            Debug.Log($"{nowTime} {instanceList.Count} {showNum}");*/
         }
-
-        /*Debug.Log($"{Mathf.Round(currTime)} {currTime}");*/
 
     }
 
@@ -129,9 +126,8 @@ public class objManager : MonoBehaviour
             instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
             instance.transform.position = spawnPos;                                                                               // 위치 설정
             instanceList.Add(instance);                                                                                           // 리스트에 추가
-/*            Debug.Log(instanceList);*/
+
         }
-        /*        y = (float)this.transform.position.y + .1f;*/
         y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
     }
 }
