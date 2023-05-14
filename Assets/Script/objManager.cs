@@ -14,6 +14,7 @@ public class objManager : MonoBehaviour
     private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
 
     private GameObject instance;                            // 포인트객체
+    private GameObject lineObject;                          // 한 라인의 포인트들을 가지고 있을 lineObject
     private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
 
     private Vector3 playerPos;
@@ -33,9 +34,11 @@ public class objManager : MonoBehaviour
     private float currTime = 0.0f;
     private int nowTime = 0;
 
-    private float testTime = 0.0f;
+    public float mdAngle = 0;                               
 
     private int showNum = 0;                                // 현재 활성화된 포인터 개수
+
+    private int lineCount = 1;
 
     private void Awake()
     {
@@ -62,7 +65,6 @@ public class objManager : MonoBehaviour
         msec = deltaTime * 1000.0f;
 
 
-
         if (currTime > limitTime)        // 현재 시간이 제한 시간보다 큰 경우
         {
             /*currTime = 0;*/
@@ -70,12 +72,12 @@ public class objManager : MonoBehaviour
         else
         {
             currTime += Time.deltaTime;
+            nowTime = (int)Math.Round(currTime);
 
             if (fps < 25)                                                                   // 프레임이 25이하(자연스러운 움직임을 감지)로 떨어질 경우  
             {           
-                if (Mathf.Round(currTime) > nowTime)                                        // 1초마다 생성                    
+                if (Math.Round(currTime) > nowTime)                                        // 1초마다 생성                    
                 {
-                    nowTime = (int)Math.Round(currTime);
                     createPoint();
                 }
 
@@ -107,6 +109,8 @@ public class objManager : MonoBehaviour
     /// </summary>
     private void createPoint()
     {
+        GameObject lineObject = new GameObject("line" + lineCount);                                                               // 한 라인을 담아둘 오브젝트 생성
+        lineObject.transform.position = new Vector3(0, y, 0);                                                                     // 라인의 위치를 변경           
 
         for (int i = 0; i < myData.data.Length; i += 2)
         {
@@ -118,16 +122,20 @@ public class objManager : MonoBehaviour
             mgrPosition.z = (float)this.transform.position.z;
             this.transform.position = mgrPosition;
 
-            playerPos = this.transform.position;                                                                                  // 현재 플레이어 위치
             playerDir = this.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
             playerDir *= float.Parse(myData.data[i].distance) * 0.01f;
-            spawnPos = playerPos + playerDir;
+            spawnPos = this.transform.position + playerDir;
+
             instance = Instantiate(point);                                                                                        // 포인트 생성
             instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
             instance.transform.position = spawnPos;                                                                               // 위치 설정
+            instance.transform.SetParent(lineObject.transform);                                                                   // lineObject의 자식으로 생성
             instanceList.Add(instance);                                                                                           // 리스트에 추가
 
         }
+        lineCount++;
         y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
+        lineObject.transform.rotation = Quaternion.Euler(mdAngle, 0, 0);                                                          // 라인의 각도를 수정
     }
+
 }
