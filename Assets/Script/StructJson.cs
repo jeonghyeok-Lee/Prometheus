@@ -33,6 +33,11 @@ namespace JsonSetting
         /// <param name="path">json 파일이 있는 상대 경로</param>
         public LoadJson(string path)
         {
+            setPath(path);
+        }
+
+        public void setPath(string path)
+        {
             TextAsset loadedJson = Resources.Load<TextAsset>(path);
             data = JsonUtility.FromJson<ScanDataArray>(loadedJson.ToString());
         }
