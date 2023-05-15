@@ -881,4 +881,4 @@ MonoBehaviour:
   point: {fileID: 8744656059225730008, guid: f5feb62d1c0721945bc6a861339682b8, type: 3}
   middle: {fileID: 282277308}
   limitTime: 60
-  mdAngle: -20
+  mdAngle: 0

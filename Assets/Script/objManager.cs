@@ -15,6 +15,7 @@ public class objManager : MonoBehaviour
 
     private GameObject instance;                            // 포인트객체
     private GameObject lineObject;                          // 한 라인의 포인트들을 가지고 있을 lineObject
+    private GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
     private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
 
     private Vector3 playerPos;
@@ -46,6 +47,8 @@ public class objManager : MonoBehaviour
         myData = ldJson.Data;                               // json 데이터 가져오기
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();              // 시작시 리스트 생성
+
+        lineGroup = new GameObject("line" + (lineCount - 1));
 
         // LineRenderer 컴포넌트 생성
         lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -109,8 +112,15 @@ public class objManager : MonoBehaviour
     /// </summary>
     private void createPoint()
     {
-        GameObject lineObject = new GameObject("line" + lineCount);                                                               // 한 라인을 담아둘 오브젝트 생성
+        lineObject = new GameObject("line" + lineCount);                                                                          // 한 라인을 담아둘 오브젝트 생성
         lineObject.transform.position = new Vector3(0, y, 0);                                                                     // 라인의 위치를 변경           
+
+        if((lineCount-1) % 100 == 0)                                                                                            
+        {
+            lineGroup = new GameObject("lineGroup" + lineCount / 100);   
+        }
+        lineGroup.transform.position = new Vector3(0, 0, 0);
+        lineObject.transform.SetParent(lineGroup.transform);
 
         for (int i = 0; i < myData.data.Length; i += 2)
         {
