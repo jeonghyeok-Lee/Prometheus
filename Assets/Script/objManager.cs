@@ -11,11 +11,6 @@ public class objManager : MonoBehaviour
 
     private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
 
-    private GameObject instance;                            // 포인트객체
-    private GameObject lineObject;                          // 한 라인의 포인트들을 가지고 있을 lineObject
-    private GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
-    private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
-
     private Vector3 playerPos;
     private Vector3 playerDir;
     private Vector3 spawnPos;
@@ -39,6 +34,13 @@ public class objManager : MonoBehaviour
 
     private int lineCount = 1;
 
+    private GameObject instance;                            // 포인트객체
+
+    private GroupMgr groupMgr;                              // 그룹핑 객체 생성
+    private GameObject pointGroup;                          // 한 라인의 포인트들을 가지고 있을 pointGroup
+    private GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
+    private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
+
     private void Awake()
     {
         LoadJson ldJson = new LoadJson("json/data00000");        // json 데이터를 로드
@@ -48,6 +50,8 @@ public class objManager : MonoBehaviour
 
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();              // 시작시 리스트 생성
+
+        groupMgr = new GroupMgr(null);        // 객체 초기화
 
 
         // LineRenderer 컴포넌트 생성
@@ -112,15 +116,17 @@ public class objManager : MonoBehaviour
     /// </summary>
     private void createPoint()
     {
-        lineObject = new GameObject("line" + lineCount);                                                                          // 한 라인을 담아둘 오브젝트 생성
-        lineObject.transform.position = new Vector3(0, y, 0);                                                                     // 라인의 위치를 변경           
+        pointGroup = groupMgr.createGroup("line" + lineCount);
+        groupMgr.setGroupPosition(pointGroup, new Vector3(0, y, 0));                                                                 // 라인의 위치를 변경           
 
         if ((lineCount - 1) % 100 == 0)                                                                                              // 라인오브젝트가 100개마다 새로운 라인그룹을 생성                                               
         {
-            lineGroup = new GameObject("lineGroup" + lineCount / 100);
+
+            lineGroup = groupMgr.createGroup("lineGroup" + lineCount / 100);
+
         }
-        lineGroup.transform.position = new Vector3(0, 0, 0);
-        lineObject.transform.SetParent(lineGroup.transform);
+        groupMgr.setGroupPosition(lineGroup, new Vector3(0, 0, 0));
+        groupMgr.addObjectToGroup(lineGroup, pointGroup);
 
         for (int i = 0; i < myData.data.Length; i += 2)
         {
@@ -140,14 +146,15 @@ public class objManager : MonoBehaviour
                 instance = Instantiate(point);                                                                                        // 포인트 생성
                 instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
                 instance.transform.position = spawnPos;                                                                               // 위치 설정
-                instance.transform.SetParent(lineObject.transform);                                                                   // lineObject의 자식으로 생성
+                /*instance.transform.SetParent(pointGroup.transform);*/                                                                   
+                groupMgr.addObjectToGroup(pointGroup, instance);                                                                        // pointGroup의 자식으로 생성
                 instanceList.Add(instance);                                                                                           // 리스트에 추가
             }
 
         }
         lineCount++;
         y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
-        lineObject.transform.rotation = Quaternion.Euler(mdAngle, 0, 0);                                                          // 라인의 각도를 수정
+        pointGroup.transform.rotation = Quaternion.Euler(mdAngle, 0, 0);                                                          // 라인의 각도를 수정
     }
 
 }
