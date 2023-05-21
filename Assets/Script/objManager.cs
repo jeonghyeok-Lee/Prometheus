@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.IO;
 using JsonSetting;
 
 
@@ -43,12 +41,14 @@ public class objManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadJson ldJson = new LoadJson("json/data");        // json 데이터를 로드
-        myData = ldJson.Data;                               // json 데이터 가져오기
+        LoadJson ldJson = new LoadJson("json/data00000");        // json 데이터를 로드
+
+/*        ldJson.setPath("json/data");*/
+        myData = ldJson.ScanData;                               // json 데이터 가져오기
+
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();              // 시작시 리스트 생성
 
-        lineGroup = new GameObject("line" + (lineCount - 1));
 
         // LineRenderer 컴포넌트 생성
         lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -115,32 +115,34 @@ public class objManager : MonoBehaviour
         lineObject = new GameObject("line" + lineCount);                                                                          // 한 라인을 담아둘 오브젝트 생성
         lineObject.transform.position = new Vector3(0, y, 0);                                                                     // 라인의 위치를 변경           
 
-        if((lineCount-1) % 100 == 0)                                                                                            
+        if ((lineCount - 1) % 100 == 0)                                                                                              // 라인오브젝트가 100개마다 새로운 라인그룹을 생성                                               
         {
-            lineGroup = new GameObject("lineGroup" + lineCount / 100);   
+            lineGroup = new GameObject("lineGroup" + lineCount / 100);
         }
         lineGroup.transform.position = new Vector3(0, 0, 0);
         lineObject.transform.SetParent(lineGroup.transform);
 
         for (int i = 0; i < myData.data.Length; i += 2)
         {
+            for(int j = 0; j < myData.data[i].Length; j += 2)
+            {
+                this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i][j].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
 
-            this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
+                mgrPosition.x = (float)this.transform.position.x;
+                mgrPosition.y = y;
+                mgrPosition.z = (float)this.transform.position.z;
+                this.transform.position = mgrPosition;
 
-            mgrPosition.x = (float)this.transform.position.x;
-            mgrPosition.y = y;
-            mgrPosition.z = (float)this.transform.position.z;
-            this.transform.position = mgrPosition;
+                playerDir = this.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
+                playerDir *= float.Parse(myData.data[i][j].distance) * 0.01f;
+                spawnPos = this.transform.position + playerDir;
 
-            playerDir = this.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
-            playerDir *= float.Parse(myData.data[i].distance) * 0.01f;
-            spawnPos = this.transform.position + playerDir;
-
-            instance = Instantiate(point);                                                                                        // 포인트 생성
-            instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
-            instance.transform.position = spawnPos;                                                                               // 위치 설정
-            instance.transform.SetParent(lineObject.transform);                                                                   // lineObject의 자식으로 생성
-            instanceList.Add(instance);                                                                                           // 리스트에 추가
+                instance = Instantiate(point);                                                                                        // 포인트 생성
+                instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
+                instance.transform.position = spawnPos;                                                                               // 위치 설정
+                instance.transform.SetParent(lineObject.transform);                                                                   // lineObject의 자식으로 생성
+                instanceList.Add(instance);                                                                                           // 리스트에 추가
+            }
 
         }
         lineCount++;

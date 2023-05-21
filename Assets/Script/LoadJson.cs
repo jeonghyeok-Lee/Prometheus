@@ -1,4 +1,6 @@
 using UnityEngine;
+using Newtonsoft.Json;
+using System;
 
 namespace JsonSetting
 {
@@ -15,16 +17,16 @@ namespace JsonSetting
     [System.Serializable]
     public struct ScanDataArray
     {
-        public ScanData[] data;
+        public ScanData[][] data;
     }
 
     public class LoadJson
     {
-        private ScanDataArray data;
+        private ScanDataArray scanData;
 
-        public ScanDataArray Data
+        public ScanDataArray ScanData
         {
-            get { return data; }
+            get { return scanData; }
         }
 
         /// <summary>
@@ -38,8 +40,15 @@ namespace JsonSetting
 
         public void setPath(string path)
         {
-            TextAsset loadedJson = Resources.Load<TextAsset>(path);
-            data = JsonUtility.FromJson<ScanDataArray>(loadedJson.ToString());
+            try
+            {
+                TextAsset loadedJson = Resources.Load<TextAsset>(path);
+                scanData = JsonConvert.DeserializeObject<ScanDataArray>(loadedJson.ToString());         
+            }catch (Exception e)
+            {
+                Debug.LogError(e);
+                Debug.LogError("Failed to load JSON file at path: " + path);
+            }
         }
 
     }
