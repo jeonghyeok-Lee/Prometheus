@@ -4,15 +4,13 @@ using System;
 using JsonSetting;
 
 
-public class objManager : MonoBehaviour
+public class PointMgr : MonoBehaviour
 {
     public GameObject point;                                // 하나의 점 역할을 수행할 객체
     public GameObject middle;                               // 중심을 나타내는 중심점
-
     private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
 
-    private Vector3 playerPos;
-    private Vector3 playerDir;
+    private Vector3 playerDir;                               
     private Vector3 spawnPos;
 
     private Vector3 mgrPosition;                            // 자신의 포지션을 저장할 Vector3변수
@@ -28,7 +26,7 @@ public class objManager : MonoBehaviour
     private float currTime = 0.0f;
     private int nowTime = 0;
 
-    public float mdAngle = 0;                               
+    public float mdAngle = 0;                               // 현재 각도
 
     private int showNum = 0;                                // 현재 활성화된 포인터 개수
 
@@ -121,9 +119,7 @@ public class objManager : MonoBehaviour
 
         if ((lineCount - 1) % 100 == 0)                                                                                              // 라인오브젝트가 100개마다 새로운 라인그룹을 생성                                               
         {
-
             lineGroup = groupMgr.createGroup("lineGroup" + lineCount / 100);
-
         }
         groupMgr.setGroupPosition(lineGroup, new Vector3(0, 0, 0));
         groupMgr.addObjectToGroup(lineGroup, pointGroup);
@@ -140,14 +136,13 @@ public class objManager : MonoBehaviour
                 this.transform.position = mgrPosition;
 
                 playerDir = this.transform.forward;                                                                                   // 현재 플레이어가 바라보는 방향
-                playerDir *= float.Parse(myData.data[i][j].distance) * 0.01f;
+                playerDir *= float.Parse(myData.data[i][j].distance) * 0.01f;                                                         
                 spawnPos = this.transform.position + playerDir;
 
                 instance = Instantiate(point);                                                                                        // 포인트 생성
                 instance.SetActive(false);                                                                                            //  생성 시에는 비활성화
                 instance.transform.position = spawnPos;                                                                               // 위치 설정
-                /*instance.transform.SetParent(pointGroup.transform);*/                                                                   
-                groupMgr.addObjectToGroup(pointGroup, instance);                                                                        // pointGroup의 자식으로 생성
+                groupMgr.addObjectToGroup(pointGroup, instance);                                                                      // pointGroup의 자식으로 생성
                 instanceList.Add(instance);                                                                                           // 리스트에 추가
             }
 
