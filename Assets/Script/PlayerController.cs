@@ -11,13 +11,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 characterForward;                                               // 플레이어의 forward;
     private Vector3 characterRight;                                                 // 플레이어의 right;
     private RotateToMouse rotateToMouse;                                            // 마우스 이동으로 카메라 회전
-    private Camera mainCamera;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         rotateToMouse = GetComponent<RotateToMouse>();
-        mainCamera = Camera.main;
 
         //초기화
         characterForward = transform.forward;
