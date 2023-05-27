@@ -1,0 +1,2462 @@
+{
+    "data": [
+      [
+        {
+          "angle": 150.609375,
+          "distance": 532
+        },
+        {
+          "angle": 152.078125,
+          "distance": 524
+        },
+        {
+          "angle": 153.34375,
+          "distance": 520
+        },
+        {
+          "angle": 162.03125,
+          "distance": 336.75
+        },
+        {
+          "angle": 163.40625,
+          "distance": 341.25
+        },
+        {
+          "angle": 164.703125,
+          "distance": 345.25
+        },
+        {
+          "angle": 171.484375,
+          "distance": 460.25
+        },
+        {
+          "angle": 173.078125,
+          "distance": 458.5
+        },
+        {
+          "angle": 174.3125,
+          "distance": 460.5
+        },
+        {
+          "angle": 181.1875,
+          "distance": 457.5
+        },
+        {
+          "angle": 182.59375,
+          "distance": 452.25
+        },
+        {
+          "angle": 184.328125,
+          "distance": 449
+        },
+        {
+          "angle": 190.953125,
+          "distance": 449.5
+        },
+        {
+          "angle": 192.1875,
+          "distance": 455.75
+        },
+        {
+          "angle": 199.21875,
+          "distance": 477
+        },
+        {
+          "angle": 201.625,
+          "distance": 478.75
+        },
+        {
+          "angle": 202.984375,
+          "distance": 485
+        },
+        {
+          "angle": 204.515625,
+          "distance": 489.5
+        },
+        {
+          "angle": 205.859375,
+          "distance": 494
+        },
+        {
+          "angle": 207.234375,
+          "distance": 499.5
+        },
+        {
+          "angle": 208.671875,
+          "distance": 505.75
+        },
+        {
+          "angle": 209.984375,
+          "distance": 512
+        },
+        {
+          "angle": 211.3125,
+          "distance": 518.75
+        },
+        {
+          "angle": 212.671875,
+          "distance": 525.25
+        },
+        {
+          "angle": 214,
+          "distance": 532.75
+        },
+        {
+          "angle": 215.265625,
+          "distance": 541.5
+        },
+        {
+          "angle": 216.640625,
+          "distance": 550.25
+        },
+        {
+          "angle": 218.046875,
+          "distance": 559.5
+        },
+        {
+          "angle": 219.46875,
+          "distance": 570
+        },
+        {
+          "angle": 220.6875,
+          "distance": 582.5
+        },
+        {
+          "angle": 225.203125,
+          "distance": 348.5
+        },
+        {
+          "angle": 226.5,
+          "distance": 342
+        },
+        {
+          "angle": 228.09375,
+          "distance": 341.75
+        },
+        {
+          "angle": 229.546875,
+          "distance": 347.25
+        },
+        {
+          "angle": 230.53125,
+          "distance": 353.5
+        },
+        {
+          "angle": 233.953125,
+          "distance": 742
+        },
+        {
+          "angle": 236.640625,
+          "distance": 790.25
+        },
+        {
+          "angle": 255.203125,
+          "distance": 1304.5
+        },
+        {
+          "angle": 256.609375,
+          "distance": 1301.5
+        },
+        {
+          "angle": 257.9375,
+          "distance": 1297.75
+        },
+        {
+          "angle": 259.34375,
+          "distance": 1292.25
+        },
+        {
+          "angle": 260.765625,
+          "distance": 1289.5
+        },
+        {
+          "angle": 273.125,
+          "distance": 1317
+        },
+        {
+          "angle": 279.703125,
+          "distance": 1689.25
+        },
+        {
+          "angle": 281.078125,
+          "distance": 1693.5
+        },
+        {
+          "angle": 282.453125,
+          "distance": 1700.25
+        },
+        {
+          "angle": 283.8125,
+          "distance": 1708.5
+        },
+        {
+          "angle": 285.15625,
+          "distance": 1718.5
+        },
+        {
+          "angle": 286.546875,
+          "distance": 1728.25
+        },
+        {
+          "angle": 287.953125,
+          "distance": 1728.5
+        },
+        {
+          "angle": 289.296875,
+          "distance": 1708.75
+        },
+        {
+          "angle": 292.015625,
+          "distance": 1785
+        },
+        {
+          "angle": 293.390625,
+          "distance": 1803.75
+        },
+        {
+          "angle": 297.1875,
+          "distance": 793.25
+        },
+        {
+          "angle": 298.546875,
+          "distance": 782.75
+        },
+        {
+          "angle": 300.015625,
+          "distance": 778.25
+        },
+        {
+          "angle": 301.421875,
+          "distance": 780.25
+        },
+        {
+          "angle": 302.671875,
+          "distance": 786
+        },
+        {
+          "angle": 304.03125,
+          "distance": 794.75
+        },
+        {
+          "angle": 305.34375,
+          "distance": 806.75
+        },
+        {
+          "angle": 313.96875,
+          "distance": 698.5
+        },
+        {
+          "angle": 316.75,
+          "distance": 663.5
+        },
+        {
+          "angle": 321.234375,
+          "distance": 599.5
+        },
+        {
+          "angle": 325.015625,
+          "distance": 414.5
+        },
+        {
+          "angle": 326.671875,
+          "distance": 408.75
+        },
+        {
+          "angle": 328.046875,
+          "distance": 408.25
+        },
+        {
+          "angle": 329.015625,
+          "distance": 410.75
+        },
+        {
+          "angle": 330.703125,
+          "distance": 415.75
+        },
+        {
+          "angle": 331.71875,
+          "distance": 423.5
+        },
+        {
+          "angle": 337.203125,
+          "distance": 765.25
+        },
+        {
+          "angle": 338.59375,
+          "distance": 750.5
+        },
+        {
+          "angle": 339.984375,
+          "distance": 740.25
+        },
+        {
+          "angle": 342.859375,
+          "distance": 1949.25
+        },
+        {
+          "angle": 344.234375,
+          "distance": 1935.25
+        },
+        {
+          "angle": 345.65625,
+          "distance": 1923
+        },
+        {
+          "angle": 347.03125,
+          "distance": 1910.25
+        },
+        {
+          "angle": 348.4375,
+          "distance": 1900.5
+        },
+        {
+          "angle": 349.828125,
+          "distance": 1892.75
+        }
+      ],
+      [
+        {
+          "angle": 351.234375,
+          "distance": 1885.25
+        },
+        {
+          "angle": 356.734375,
+          "distance": 1849
+        },
+        {
+          "angle": 358.09375,
+          "distance": 1856.5
+        },
+        {
+          "angle": 359.453125,
+          "distance": 1854.25
+        },
+        {
+          "angle": 0.875,
+          "distance": 1852
+        },
+        {
+          "angle": 2.203125,
+          "distance": 1854
+        },
+        {
+          "angle": 3.578125,
+          "distance": 1857.5
+        },
+        {
+          "angle": 4.96875,
+          "distance": 1858
+        },
+        {
+          "angle": 6.34375,
+          "distance": 1860
+        },
+        {
+          "angle": 7.71875,
+          "distance": 1865.5
+        },
+        {
+          "angle": 9.125,
+          "distance": 1876
+        },
+        {
+          "angle": 13.203125,
+          "distance": 1890.5
+        },
+        {
+          "angle": 14.578125,
+          "distance": 1903.25
+        },
+        {
+          "angle": 15.96875,
+          "distance": 1913.25
+        },
+        {
+          "angle": 17.3125,
+          "distance": 1923
+        },
+        {
+          "angle": 18.703125,
+          "distance": 1935.75
+        },
+        {
+          "angle": 20.078125,
+          "distance": 1954
+        },
+        {
+          "angle": 21.4375,
+          "distance": 1973.25
+        },
+        {
+          "angle": 22.8125,
+          "distance": 1968.25
+        },
+        {
+          "angle": 24.203125,
+          "distance": 1951.25
+        },
+        {
+          "angle": 25.578125,
+          "distance": 1957.5
+        },
+        {
+          "angle": 26.96875,
+          "distance": 1951
+        },
+        {
+          "angle": 33.78125,
+          "distance": 1944.5
+        },
+        {
+          "angle": 35.296875,
+          "distance": 1972
+        },
+        {
+          "angle": 40.953125,
+          "distance": 655.5
+        },
+        {
+          "angle": 42.359375,
+          "distance": 654
+        },
+        {
+          "angle": 48.703125,
+          "distance": 856.5
+        },
+        {
+          "angle": 50.21875,
+          "distance": 837.75
+        },
+        {
+          "angle": 51.484375,
+          "distance": 823.25
+        },
+        {
+          "angle": 53,
+          "distance": 820.5
+        },
+        {
+          "angle": 54.203125,
+          "distance": 828
+        },
+        {
+          "angle": 56.90625,
+          "distance": 887
+        },
+        {
+          "angle": 63.96875,
+          "distance": 318.75
+        },
+        {
+          "angle": 65.734375,
+          "distance": 320.25
+        },
+        {
+          "angle": 66.515625,
+          "distance": 321.25
+        },
+        {
+          "angle": 68.515625,
+          "distance": 323
+        },
+        {
+          "angle": 69.578125,
+          "distance": 325
+        },
+        {
+          "angle": 70.53125,
+          "distance": 327.5
+        },
+        {
+          "angle": 72.125,
+          "distance": 330.25
+        },
+        {
+          "angle": 92.796875,
+          "distance": 800.25
+        },
+        {
+          "angle": 94.265625,
+          "distance": 794.5
+        },
+        {
+          "angle": 95.59375,
+          "distance": 790.5
+        },
+        {
+          "angle": 97.09375,
+          "distance": 785.25
+        },
+        {
+          "angle": 99.734375,
+          "distance": 789
+        },
+        {
+          "angle": 104.1875,
+          "distance": 702.25
+        },
+        {
+          "angle": 105.515625,
+          "distance": 695.75
+        },
+        {
+          "angle": 106.84375,
+          "distance": 709.5
+        },
+        {
+          "angle": 108.984375,
+          "distance": 1005
+        },
+        {
+          "angle": 110.265625,
+          "distance": 1013.25
+        },
+        {
+          "angle": 113.109375,
+          "distance": 967.75
+        },
+        {
+          "angle": 114.546875,
+          "distance": 973.5
+        },
+        {
+          "angle": 115.859375,
+          "distance": 983.75
+        },
+        {
+          "angle": 121.625,
+          "distance": 853.25
+        },
+        {
+          "angle": 124.375,
+          "distance": 833
+        },
+        {
+          "angle": 131.546875,
+          "distance": 719.25
+        },
+        {
+          "angle": 134.65625,
+          "distance": 578.5
+        },
+        {
+          "angle": 140.03125,
+          "distance": 612
+        },
+        {
+          "angle": 141.40625,
+          "distance": 598.75
+        },
+        {
+          "angle": 142.984375,
+          "distance": 586.5
+        },
+        {
+          "angle": 148.5625,
+          "distance": 540.25
+        },
+        {
+          "angle": 149.984375,
+          "distance": 534.75
+        },
+        {
+          "angle": 151.4375,
+          "distance": 527
+        },
+        {
+          "angle": 152.828125,
+          "distance": 520
+        },
+        {
+          "angle": 161.046875,
+          "distance": 335.75
+        },
+        {
+          "angle": 162.5625,
+          "distance": 339
+        },
+        {
+          "angle": 170.890625,
+          "distance": 461
+        },
+        {
+          "angle": 172.578125,
+          "distance": 458.75
+        },
+        {
+          "angle": 173.96875,
+          "distance": 457.75
+        },
+        {
+          "angle": 177.796875,
+          "distance": 455
+        },
+        {
+          "angle": 180.703125,
+          "distance": 449.75
+        },
+        {
+          "angle": 182.15625,
+          "distance": 450
+        },
+        {
+          "angle": 183.609375,
+          "distance": 450.5
+        },
+        {
+          "angle": 191.859375,
+          "distance": 453
+        },
+        {
+          "angle": 199.828125,
+          "distance": 473.25
+        },
+        {
+          "angle": 201.09375,
+          "distance": 479
+        },
+        {
+          "angle": 202.484375,
+          "distance": 485.25
+        },
+        {
+          "angle": 203.796875,
+          "distance": 487.5
+        },
+        {
+          "angle": 205.28125,
+          "distance": 492
+        },
+        {
+          "angle": 206.546875,
+          "distance": 497.25
+        },
+        {
+          "angle": 208.03125,
+          "distance": 503.25
+        },
+        {
+          "angle": 209.34375,
+          "distance": 509.25
+        },
+        {
+          "angle": 210.671875,
+          "distance": 515.5
+        },
+        {
+          "angle": 211.9375,
+          "distance": 522.5
+        },
+        {
+          "angle": 213.46875,
+          "distance": 529.5
+        },
+        {
+          "angle": 214.84375,
+          "distance": 537.25
+        },
+        {
+          "angle": 216.15625,
+          "distance": 546
+        },
+        {
+          "angle": 217.515625,
+          "distance": 555.25
+        },
+        {
+          "angle": 218.75,
+          "distance": 564.75
+        },
+        {
+          "angle": 219.953125,
+          "distance": 575.75
+        },
+        {
+          "angle": 224.625,
+          "distance": 352.75
+        },
+        {
+          "angle": 226.265625,
+          "distance": 345.5
+        },
+        {
+          "angle": 227.671875,
+          "distance": 346
+        },
+        {
+          "angle": 228.515625,
+          "distance": 348
+        },
+        {
+          "angle": 230.171875,
+          "distance": 349.75
+        },
+        {
+          "angle": 255.84375,
+          "distance": 1305.25
+        },
+        {
+          "angle": 257.234375,
+          "distance": 1300.25
+        },
+        {
+          "angle": 258.6875,
+          "distance": 1294.75
+        },
+        {
+          "angle": 259.984375,
+          "distance": 1289.75
+        },
+        {
+          "angle": 261.40625,
+          "distance": 1288.25
+        },
+        {
+          "angle": 268.296875,
+          "distance": 1292.75
+        },
+        {
+          "angle": 269.59375,
+          "distance": 1303.5
+        },
+        {
+          "angle": 273.765625,
+          "distance": 1323
+        },
+        {
+          "angle": 280.265625,
+          "distance": 1692
+        },
+        {
+          "angle": 281.609375,
+          "distance": 1696.75
+        },
+        {
+          "angle": 283.015625,
+          "distance": 1704.5
+        },
+        {
+          "angle": 284.328125,
+          "distance": 1714.25
+        },
+        {
+          "angle": 285.734375,
+          "distance": 1723.75
+        },
+        {
+          "angle": 287.109375,
+          "distance": 1731
+        },
+        {
+          "angle": 288.453125,
+          "distance": 1710.75
+        },
+        {
+          "angle": 291.1875,
+          "distance": 1775.25
+        },
+        {
+          "angle": 292.5,
+          "distance": 1793.75
+        },
+        {
+          "angle": 296.21875,
+          "distance": 801
+        },
+        {
+          "angle": 297.640625,
+          "distance": 788
+        },
+        {
+          "angle": 299.015625,
+          "distance": 779.75
+        },
+        {
+          "angle": 300.625,
+          "distance": 778.5
+        },
+        {
+          "angle": 301.90625,
+          "distance": 781.5
+        },
+        {
+          "angle": 303.296875,
+          "distance": 787
+        },
+        {
+          "angle": 304.59375,
+          "distance": 797.5
+        },
+        {
+          "angle": 306.015625,
+          "distance": 814.25
+        },
+        {
+          "angle": 313.109375,
+          "distance": 710.75
+        },
+        {
+          "angle": 314.578125,
+          "distance": 694.5
+        },
+        {
+          "angle": 317.53125,
+          "distance": 655.5
+        },
+        {
+          "angle": 320.421875,
+          "distance": 605.5
+        },
+        {
+          "angle": 321.796875,
+          "distance": 598
+        },
+        {
+          "angle": 325.578125,
+          "distance": 411
+        },
+        {
+          "angle": 326.859375,
+          "distance": 408.25
+        },
+        {
+          "angle": 328.46875,
+          "distance": 409
+        },
+        {
+          "angle": 329.796875,
+          "distance": 412.25
+        },
+        {
+          "angle": 331.15625,
+          "distance": 418.5
+        },
+        {
+          "angle": 337.703125,
+          "distance": 759.5
+        },
+        {
+          "angle": 339.125,
+          "distance": 745
+        },
+        {
+          "angle": 344.796875,
+          "distance": 1930
+        },
+        {
+          "angle": 346.171875,
+          "distance": 1917
+        },
+        {
+          "angle": 347.59375,
+          "distance": 1905.25
+        },
+        {
+          "angle": 348.984375,
+          "distance": 1896.5
+        },
+        {
+          "angle": 350.375,
+          "distance": 1889.5
+        }
+      ],
+      [
+        {
+          "angle": 351.734375,
+          "distance": 1882.5
+        },
+        {
+          "angle": 355.890625,
+          "distance": 1868.5
+        },
+        {
+          "angle": 357.296875,
+          "distance": 1858.25
+        },
+        {
+          "angle": 358.65625,
+          "distance": 1854.25
+        },
+        {
+          "angle": 0.03125,
+          "distance": 1852.5
+        },
+        {
+          "angle": 1.40625,
+          "distance": 1853.25
+        },
+        {
+          "angle": 2.8125,
+          "distance": 1854.25
+        },
+        {
+          "angle": 4.15625,
+          "distance": 1856.5
+        },
+        {
+          "angle": 5.546875,
+          "distance": 1858
+        },
+        {
+          "angle": 6.921875,
+          "distance": 1862.5
+        },
+        {
+          "angle": 8.296875,
+          "distance": 1867.5
+        },
+        {
+          "angle": 12.40625,
+          "distance": 1880.5
+        },
+        {
+          "angle": 13.765625,
+          "distance": 1896
+        },
+        {
+          "angle": 15.140625,
+          "distance": 1904.5
+        },
+        {
+          "angle": 16.53125,
+          "distance": 1915.75
+        },
+        {
+          "angle": 17.90625,
+          "distance": 1928.25
+        },
+        {
+          "angle": 19.25,
+          "distance": 1942.25
+        },
+        {
+          "angle": 20.625,
+          "distance": 1962.5
+        },
+        {
+          "angle": 22,
+          "distance": 1980.25
+        },
+        {
+          "angle": 23.4375,
+          "distance": 1963
+        },
+        {
+          "angle": 24.796875,
+          "distance": 1946.5
+        },
+        {
+          "angle": 33.015625,
+          "distance": 1935.5
+        },
+        {
+          "angle": 34.4375,
+          "distance": 1962.5
+        },
+        {
+          "angle": 35.875,
+          "distance": 1982
+        },
+        {
+          "angle": 39.984375,
+          "distance": 684.75
+        },
+        {
+          "angle": 43.03125,
+          "distance": 655.25
+        },
+        {
+          "angle": 47.875,
+          "distance": 877
+        },
+        {
+          "angle": 49.421875,
+          "distance": 856.75
+        },
+        {
+          "angle": 50.703125,
+          "distance": 834.75
+        },
+        {
+          "angle": 52.140625,
+          "distance": 823.25
+        },
+        {
+          "angle": 57.578125,
+          "distance": 893
+        },
+        {
+          "angle": 64.59375,
+          "distance": 318.75
+        },
+        {
+          "angle": 65.765625,
+          "distance": 320.25
+        },
+        {
+          "angle": 67.40625,
+          "distance": 322.25
+        },
+        {
+          "angle": 68.609375,
+          "distance": 324.75
+        },
+        {
+          "angle": 70.234375,
+          "distance": 327
+        },
+        {
+          "angle": 71.421875,
+          "distance": 329
+        },
+        {
+          "angle": 93.484375,
+          "distance": 796.5
+        },
+        {
+          "angle": 94.9375,
+          "distance": 791
+        },
+        {
+          "angle": 96.203125,
+          "distance": 786
+        },
+        {
+          "angle": 97.703125,
+          "distance": 788.25
+        },
+        {
+          "angle": 99.078125,
+          "distance": 793.75
+        },
+        {
+          "angle": 103.40625,
+          "distance": 707.5
+        },
+        {
+          "angle": 106.15625,
+          "distance": 698.25
+        },
+        {
+          "angle": 110.953125,
+          "distance": 1018.25
+        },
+        {
+          "angle": 113.78125,
+          "distance": 968.5
+        },
+        {
+          "angle": 115.171875,
+          "distance": 977
+        },
+        {
+          "angle": 116.53125,
+          "distance": 968.25
+        },
+        {
+          "angle": 120.875,
+          "distance": 857.75
+        },
+        {
+          "angle": 125.09375,
+          "distance": 837.5
+        },
+        {
+          "angle": 133.953125,
+          "distance": 580.5
+        },
+        {
+          "angle": 135.25,
+          "distance": 573.5
+        },
+        {
+          "angle": 140.734375,
+          "distance": 605.75
+        },
+        {
+          "angle": 142.109375,
+          "distance": 592.75
+        },
+        {
+          "angle": 143.59375,
+          "distance": 580.75
+        },
+        {
+          "angle": 150.75,
+          "distance": 531.25
+        },
+        {
+          "angle": 152.03125,
+          "distance": 524
+        },
+        {
+          "angle": 153.234375,
+          "distance": 522
+        },
+        {
+          "angle": 160.3125,
+          "distance": 335
+        },
+        {
+          "angle": 163.09375,
+          "distance": 339.5
+        },
+        {
+          "angle": 164.734375,
+          "distance": 346.25
+        },
+        {
+          "angle": 171.53125,
+          "distance": 460.25
+        },
+        {
+          "angle": 173.1875,
+          "distance": 458.25
+        },
+        {
+          "angle": 174.4375,
+          "distance": 460.5
+        },
+        {
+          "angle": 181.53125,
+          "distance": 457.5
+        },
+        {
+          "angle": 182.625,
+          "distance": 452.25
+        },
+        {
+          "angle": 191.078125,
+          "distance": 453.25
+        },
+        {
+          "angle": 192.21875,
+          "distance": 455.75
+        },
+        {
+          "angle": 199.25,
+          "distance": 477
+        },
+        {
+          "angle": 201.84375,
+          "distance": 478.75
+        },
+        {
+          "angle": 203.0625,
+          "distance": 485
+        },
+        {
+          "angle": 204.453125,
+          "distance": 489.25
+        },
+        {
+          "angle": 205.796875,
+          "distance": 494
+        },
+        {
+          "angle": 207.203125,
+          "distance": 499.5
+        },
+        {
+          "angle": 208.65625,
+          "distance": 505.75
+        },
+        {
+          "angle": 209.984375,
+          "distance": 511.5
+        },
+        {
+          "angle": 211.375,
+          "distance": 517.75
+        },
+        {
+          "angle": 212.59375,
+          "distance": 525
+        },
+        {
+          "angle": 213.890625,
+          "distance": 532.25
+        },
+        {
+          "angle": 215.28125,
+          "distance": 540.25
+        },
+        {
+          "angle": 216.578125,
+          "distance": 549.5
+        },
+        {
+          "angle": 217.984375,
+          "distance": 559
+        },
+        {
+          "angle": 219.21875,
+          "distance": 569
+        },
+        {
+          "angle": 220.515625,
+          "distance": 580.25
+        },
+        {
+          "angle": 225.078125,
+          "distance": 349.5
+        },
+        {
+          "angle": 226.34375,
+          "distance": 343
+        },
+        {
+          "angle": 227.640625,
+          "distance": 342.75
+        },
+        {
+          "angle": 229.046875,
+          "distance": 346.75
+        },
+        {
+          "angle": 230.40625,
+          "distance": 352.25
+        },
+        {
+          "angle": 233.71875,
+          "distance": 739.75
+        },
+        {
+          "angle": 235,
+          "distance": 761.25
+        },
+        {
+          "angle": 256.34375,
+          "distance": 1301
+        },
+        {
+          "angle": 257.65625,
+          "distance": 1293.5
+        },
+        {
+          "angle": 259.03125,
+          "distance": 1289.75
+        },
+        {
+          "angle": 260.453125,
+          "distance": 1289
+        },
+        {
+          "angle": 261.78125,
+          "distance": 1286.25
+        },
+        {
+          "angle": 265.78125,
+          "distance": 1534.75
+        },
+        {
+          "angle": 268.71875,
+          "distance": 1294.25
+        },
+        {
+          "angle": 270.109375,
+          "distance": 1310.5
+        },
+        {
+          "angle": 271.453125,
+          "distance": 1314
+        },
+        {
+          "angle": 272.8125,
+          "distance": 1315.25
+        },
+        {
+          "angle": 275.59375,
+          "distance": 1157.5
+        },
+        {
+          "angle": 280.65625,
+          "distance": 1694.25
+        },
+        {
+          "angle": 282.015625,
+          "distance": 1699.75
+        },
+        {
+          "angle": 283.4375,
+          "distance": 1707.75
+        },
+        {
+          "angle": 284.765625,
+          "distance": 1716.75
+        },
+        {
+          "angle": 286.125,
+          "distance": 1725
+        },
+        {
+          "angle": 287.484375,
+          "distance": 1734.25
+        },
+        {
+          "angle": 288.890625,
+          "distance": 1715.75
+        },
+        {
+          "angle": 291.578125,
+          "distance": 1778.5
+        },
+        {
+          "angle": 292.953125,
+          "distance": 1796.5
+        },
+        {
+          "angle": 296.703125,
+          "distance": 797
+        },
+        {
+          "angle": 298.046875,
+          "distance": 785.25
+        },
+        {
+          "angle": 299.46875,
+          "distance": 778.5
+        },
+        {
+          "angle": 300.890625,
+          "distance": 778
+        },
+        {
+          "angle": 302.28125,
+          "distance": 782.5
+        },
+        {
+          "angle": 303.703125,
+          "distance": 789.5
+        },
+        {
+          "angle": 305,
+          "distance": 800
+        },
+        {
+          "angle": 306.359375,
+          "distance": 819.25
+        },
+        {
+          "angle": 313.46875,
+          "distance": 705
+        },
+        {
+          "angle": 314.90625,
+          "distance": 691.25
+        },
+        {
+          "angle": 320.78125,
+          "distance": 602
+        },
+        {
+          "angle": 325.953125,
+          "distance": 409
+        },
+        {
+          "angle": 327.65625,
+          "distance": 406.75
+        },
+        {
+          "angle": 328.859375,
+          "distance": 409.25
+        },
+        {
+          "angle": 330.328125,
+          "distance": 414
+        },
+        {
+          "angle": 331.21875,
+          "distance": 421
+        },
+        {
+          "angle": 338.0625,
+          "distance": 756
+        },
+        {
+          "angle": 339.5625,
+          "distance": 742
+        },
+        {
+          "angle": 345.15625,
+          "distance": 1926
+        },
+        {
+          "angle": 346.53125,
+          "distance": 1914.5
+        },
+        {
+          "angle": 348,
+          "distance": 1903.25
+        },
+        {
+          "angle": 349.359375,
+          "distance": 1894.75
+        },
+        {
+          "angle": 350.734375,
+          "distance": 1887.75
+        }
+      ],
+      [
+        {
+          "angle": 352.15625,
+          "distance": 1879.25
+        },
+        {
+          "angle": 357.640625,
+          "distance": 1857
+        },
+        {
+          "angle": 359,
+          "distance": 1856.5
+        },
+        {
+          "angle": 0.40625,
+          "distance": 1854.25
+        },
+        {
+          "angle": 1.75,
+          "distance": 1854
+        },
+        {
+          "angle": 3.140625,
+          "distance": 1854.5
+        },
+        {
+          "angle": 4.515625,
+          "distance": 1854.5
+        },
+        {
+          "angle": 5.921875,
+          "distance": 1858
+        },
+        {
+          "angle": 7.25,
+          "distance": 1864.75
+        },
+        {
+          "angle": 8.640625,
+          "distance": 1871.5
+        },
+        {
+          "angle": 12.828125,
+          "distance": 1884.75
+        },
+        {
+          "angle": 14.234375,
+          "distance": 1899.5
+        },
+        {
+          "angle": 15.59375,
+          "distance": 1909
+        },
+        {
+          "angle": 16.96875,
+          "distance": 1920
+        },
+        {
+          "angle": 18.3125,
+          "distance": 1933.75
+        },
+        {
+          "angle": 19.71875,
+          "distance": 1950.75
+        },
+        {
+          "angle": 21.09375,
+          "distance": 1969.25
+        },
+        {
+          "angle": 22.4375,
+          "distance": 1990.5
+        },
+        {
+          "angle": 23.859375,
+          "distance": 1973.25
+        },
+        {
+          "angle": 25.234375,
+          "distance": 1953
+        },
+        {
+          "angle": 26.578125,
+          "distance": 1958.5
+        },
+        {
+          "angle": 33.5,
+          "distance": 1940.75
+        },
+        {
+          "angle": 34.9375,
+          "distance": 1968.25
+        },
+        {
+          "angle": 42,
+          "distance": 654.5
+        },
+        {
+          "angle": 43.40625,
+          "distance": 658.75
+        },
+        {
+          "angle": 48.390625,
+          "distance": 867.5
+        },
+        {
+          "angle": 49.75,
+          "distance": 851
+        },
+        {
+          "angle": 51.234375,
+          "distance": 832.75
+        },
+        {
+          "angle": 52.53125,
+          "distance": 822.5
+        },
+        {
+          "angle": 65.203125,
+          "distance": 319.5
+        },
+        {
+          "angle": 66.390625,
+          "distance": 320.75
+        },
+        {
+          "angle": 68.1875,
+          "distance": 323.25
+        },
+        {
+          "angle": 68.921875,
+          "distance": 325.5
+        },
+        {
+          "angle": 70.328125,
+          "distance": 327.75
+        },
+        {
+          "angle": 71.671875,
+          "distance": 330.25
+        },
+        {
+          "angle": 92.59375,
+          "distance": 801.75
+        },
+        {
+          "angle": 93.984375,
+          "distance": 796.75
+        },
+        {
+          "angle": 95.328125,
+          "distance": 791
+        },
+        {
+          "angle": 96.828125,
+          "distance": 785.25
+        },
+        {
+          "angle": 99.46875,
+          "distance": 788
+        },
+        {
+          "angle": 103.859375,
+          "distance": 704.25
+        },
+        {
+          "angle": 105.171875,
+          "distance": 700.5
+        },
+        {
+          "angle": 106.515625,
+          "distance": 711.5
+        },
+        {
+          "angle": 112.921875,
+          "distance": 965.75
+        },
+        {
+          "angle": 114.28125,
+          "distance": 971.5
+        },
+        {
+          "angle": 115.703125,
+          "distance": 980.5
+        },
+        {
+          "angle": 121.453125,
+          "distance": 854.75
+        },
+        {
+          "angle": 122.734375,
+          "distance": 855
+        },
+        {
+          "angle": 124.203125,
+          "distance": 852.25
+        },
+        {
+          "angle": 131.390625,
+          "distance": 721.75
+        },
+        {
+          "angle": 134.515625,
+          "distance": 579.75
+        },
+        {
+          "angle": 139.859375,
+          "distance": 613.75
+        },
+        {
+          "angle": 141.3125,
+          "distance": 600
+        },
+        {
+          "angle": 142.6875,
+          "distance": 587.75
+        },
+        {
+          "angle": 144.171875,
+          "distance": 576
+        },
+        {
+          "angle": 149.75,
+          "distance": 536
+        },
+        {
+          "angle": 151.25,
+          "distance": 527.75
+        },
+        {
+          "angle": 152.484375,
+          "distance": 520.5
+        },
+        {
+          "angle": 170.90625,
+          "distance": 461.25
+        },
+        {
+          "angle": 172.234375,
+          "distance": 459
+        },
+        {
+          "angle": 173.84375,
+          "distance": 457.5
+        },
+        {
+          "angle": 180.828125,
+          "distance": 451.75
+        },
+        {
+          "angle": 181.984375,
+          "distance": 449.75
+        },
+        {
+          "angle": 183.484375,
+          "distance": 452
+        },
+        {
+          "angle": 191.65625,
+          "distance": 454.5
+        },
+        {
+          "angle": 199.84375,
+          "distance": 473.25
+        },
+        {
+          "angle": 201.21875,
+          "distance": 479.5
+        },
+        {
+          "angle": 202.484375,
+          "distance": 485.25
+        },
+        {
+          "angle": 203.75,
+          "distance": 487
+        },
+        {
+          "angle": 205.140625,
+          "distance": 491.75
+        },
+        {
+          "angle": 206.609375,
+          "distance": 496.75
+        },
+        {
+          "angle": 207.75,
+          "distance": 502.75
+        },
+        {
+          "angle": 209.28125,
+          "distance": 508.5
+        },
+        {
+          "angle": 210.625,
+          "distance": 514.25
+        },
+        {
+          "angle": 211.890625,
+          "distance": 521.5
+        },
+        {
+          "angle": 213.234375,
+          "distance": 528.75
+        },
+        {
+          "angle": 214.625,
+          "distance": 536.25
+        },
+        {
+          "angle": 216.015625,
+          "distance": 544.5
+        },
+        {
+          "angle": 217.125,
+          "distance": 553.75
+        },
+        {
+          "angle": 218.6875,
+          "distance": 563.75
+        },
+        {
+          "angle": 219.84375,
+          "distance": 574.25
+        },
+        {
+          "angle": 224.453125,
+          "distance": 354.25
+        },
+        {
+          "angle": 225.9375,
+          "distance": 346.25
+        },
+        {
+          "angle": 227.140625,
+          "distance": 345.75
+        },
+        {
+          "angle": 228.40625,
+          "distance": 347
+        },
+        {
+          "angle": 229.78125,
+          "distance": 348.5
+        },
+        {
+          "angle": 235.734375,
+          "distance": 773
+        },
+        {
+          "angle": 255.65625,
+          "distance": 1305.25
+        },
+        {
+          "angle": 256.96875,
+          "distance": 1298.5
+        },
+        {
+          "angle": 258.34375,
+          "distance": 1293.5
+        },
+        {
+          "angle": 259.765625,
+          "distance": 1289.75
+        },
+        {
+          "angle": 261.109375,
+          "distance": 1287.5
+        },
+        {
+          "angle": 268.046875,
+          "distance": 1285
+        },
+        {
+          "angle": 273.46875,
+          "distance": 1325.5
+        },
+        {
+          "angle": 279.984375,
+          "distance": 1691.5
+        },
+        {
+          "angle": 281.34375,
+          "distance": 1697
+        },
+        {
+          "angle": 282.703125,
+          "distance": 1703
+        },
+        {
+          "angle": 284.0625,
+          "distance": 1710
+        },
+        {
+          "angle": 285.4375,
+          "distance": 1720.75
+        },
+        {
+          "angle": 286.828125,
+          "distance": 1729.5
+        },
+        {
+          "angle": 292.21875,
+          "distance": 1786.75
+        },
+        {
+          "angle": 293.625,
+          "distance": 1807.75
+        },
+        {
+          "angle": 297.390625,
+          "distance": 790.5
+        },
+        {
+          "angle": 298.84375,
+          "distance": 779.25
+        },
+        {
+          "angle": 300.234375,
+          "distance": 776.75
+        },
+        {
+          "angle": 301.53125,
+          "distance": 781
+        },
+        {
+          "angle": 302.90625,
+          "distance": 787.25
+        },
+        {
+          "angle": 304.25,
+          "distance": 794.25
+        },
+        {
+          "angle": 305.609375,
+          "distance": 807
+        },
+        {
+          "angle": 312.78125,
+          "distance": 715.25
+        },
+        {
+          "angle": 314.078125,
+          "distance": 699.25
+        },
+        {
+          "angle": 316.90625,
+          "distance": 662
+        },
+        {
+          "angle": 321.421875,
+          "distance": 598
+        },
+        {
+          "angle": 325.4375,
+          "distance": 414
+        },
+        {
+          "angle": 326.78125,
+          "distance": 408.5
+        },
+        {
+          "angle": 327.96875,
+          "distance": 408.75
+        },
+        {
+          "angle": 329.28125,
+          "distance": 411.5
+        },
+        {
+          "angle": 330.609375,
+          "distance": 416.75
+        },
+        {
+          "angle": 337.421875,
+          "distance": 764
+        },
+        {
+          "angle": 338.765625,
+          "distance": 748.75
+        },
+        {
+          "angle": 340.15625,
+          "distance": 740.25
+        },
+        {
+          "angle": 343.03125,
+          "distance": 1947.75
+        },
+        {
+          "angle": 344.390625,
+          "distance": 1935
+        },
+        {
+          "angle": 345.78125,
+          "distance": 1922.5
+        },
+        {
+          "angle": 347.171875,
+          "distance": 1910.25
+        },
+        {
+          "angle": 348.546875,
+          "distance": 1900.5
+        },
+        {
+          "angle": 349.90625,
+          "distance": 1892.25
+        }
+      ],
+      [
+        {
+          "angle": 351.328125,
+          "distance": 1882.75
+        },
+        {
+          "angle": 356.828125,
+          "distance": 1854.75
+        },
+        {
+          "angle": 358.1875,
+          "distance": 1854.75
+        },
+        {
+          "angle": 359.59375,
+          "distance": 1853.25
+        },
+        {
+          "angle": 0.9375,
+          "distance": 1851
+        },
+        {
+          "angle": 2.34375,
+          "distance": 1852
+        },
+        {
+          "angle": 3.71875,
+          "distance": 1856
+        },
+        {
+          "angle": 5.09375,
+          "distance": 1858.25
+        },
+        {
+          "angle": 6.4375,
+          "distance": 1861.25
+        },
+        {
+          "angle": 7.84375,
+          "distance": 1865.75
+        },
+        {
+          "angle": 14.75,
+          "distance": 1904.25
+        },
+        {
+          "angle": 16.125,
+          "distance": 1913.75
+        },
+        {
+          "angle": 17.53125,
+          "distance": 1926.5
+        },
+        {
+          "angle": 18.90625,
+          "distance": 1940
+        },
+        {
+          "angle": 20.265625,
+          "distance": 1957.5
+        },
+        {
+          "angle": 21.640625,
+          "distance": 1976.5
+        },
+        {
+          "angle": 23.046875,
+          "distance": 1954.5
+        },
+        {
+          "angle": 24.40625,
+          "distance": 1937.75
+        },
+        {
+          "angle": 25.796875,
+          "distance": 1963.5
+        },
+        {
+          "angle": 34.0625,
+          "distance": 1946.75
+        },
+        {
+          "angle": 35.484375,
+          "distance": 1973.25
+        },
+        {
+          "angle": 39.828125,
+          "distance": 636.5
+        },
+        {
+          "angle": 41.21875,
+          "distance": 644.75
+        },
+        {
+          "angle": 42.4375,
+          "distance": 654
+        },
+        {
+          "angle": 48.9375,
+          "distance": 856.25
+        },
+        {
+          "angle": 50.359375,
+          "distance": 836.75
+        },
+        {
+          "angle": 51.765625,
+          "distance": 824.5
+        },
+        {
+          "angle": 53.140625,
+          "distance": 823.5
+        },
+        {
+          "angle": 64.375,
+          "distance": 318.5
+        },
+        {
+          "angle": 65.40625,
+          "distance": 320
+        },
+        {
+          "angle": 67.078125,
+          "distance": 321.75
+        },
+        {
+          "angle": 68.734375,
+          "distance": 323.75
+        },
+        {
+          "angle": 69.9375,
+          "distance": 326
+        },
+        {
+          "angle": 71.140625,
+          "distance": 328.25
+        },
+        {
+          "angle": 72.234375,
+          "distance": 330.75
+        },
+        {
+          "angle": 73.703125,
+          "distance": 333.75
+        },
+        {
+          "angle": 93.3125,
+          "distance": 798.25
+        },
+        {
+          "angle": 94.59375,
+          "distance": 793.5
+        },
+        {
+          "angle": 96,
+          "distance": 788.75
+        },
+        {
+          "angle": 97.4375,
+          "distance": 783.75
+        },
+        {
+          "angle": 98.734375,
+          "distance": 785
+        },
+        {
+          "angle": 100,
+          "distance": 799.25
+        },
+        {
+          "angle": 103.15625,
+          "distance": 718.75
+        },
+        {
+          "angle": 105.828125,
+          "distance": 706
+        },
+        {
+          "angle": 110.75,
+          "distance": 1016
+        },
+        {
+          "angle": 113.578125,
+          "distance": 967
+        },
+        {
+          "angle": 114.84375,
+          "distance": 975.5
+        },
+        {
+          "angle": 116.3125,
+          "distance": 979
+        },
+        {
+          "angle": 122.0625,
+          "distance": 851
+        },
+        {
+          "angle": 126.234375,
+          "distance": 817.75
+        },
+        {
+          "angle": 130.5,
+          "distance": 734.5
+        },
+        {
+          "angle": 133.90625,
+          "distance": 582.25
+        },
+        {
+          "angle": 135.28125,
+          "distance": 577
+        },
+        {
+          "angle": 140.4375,
+          "distance": 607.75
+        },
+        {
+          "angle": 141.9375,
+          "distance": 594.5
+        },
+        {
+          "angle": 143.40625,
+          "distance": 581.5
+        },
+        {
+          "angle": 150.453125,
+          "distance": 532
+        },
+        {
+          "angle": 151.828125,
+          "distance": 524.5
+        },
+        {
+          "angle": 153.4375,
+          "distance": 520.5
+        },
+        {
+          "angle": 161.640625,
+          "distance": 337.25
+        },
+        {
+          "angle": 163.296875,
+          "distance": 341.5
+        },
+        {
+          "angle": 164.203125,
+          "distance": 345.25
+        },
+        {
+          "angle": 171.578125,
+          "distance": 460.25
+        },
+        {
+          "angle": 173.015625,
+          "distance": 458.5
+        },
+        {
+          "angle": 174.34375,
+          "distance": 460.5
+        },
+        {
+          "angle": 181.203125,
+          "distance": 457.5
+        },
+        {
+          "angle": 182.515625,
+          "distance": 452.25
+        },
+        {
+          "angle": 184.140625,
+          "distance": 448.75
+        },
+        {
+          "angle": 191.03125,
+          "distance": 449.25
+        },
+        {
+          "angle": 192.359375,
+          "distance": 455.25
+        },
+        {
+          "angle": 199.09375,
+          "distance": 477
+        },
+        {
+          "angle": 201.71875,
+          "distance": 478.75
+        },
+        {
+          "angle": 203.0625,
+          "distance": 485
+        },
+        {
+          "angle": 204.609375,
+          "distance": 489
+        },
+        {
+          "angle": 205.734375,
+          "distance": 493.75
+        },
+        {
+          "angle": 207.21875,
+          "distance": 499.5
+        },
+        {
+          "angle": 208.609375,
+          "distance": 505
+        },
+        {
+          "angle": 209.6875,
+          "distance": 511
+        },
+        {
+          "angle": 211.296875,
+          "distance": 517.75
+        },
+        {
+          "angle": 212.5625,
+          "distance": 524.5
+        },
+        {
+          "angle": 213.9375,
+          "distance": 531.75
+        },
+        {
+          "angle": 215.1875,
+          "distance": 540.25
+        },
+        {
+          "angle": 216.484375,
+          "distance": 548.75
+        },
+        {
+          "angle": 217.828125,
+          "distance": 558.25
+        },
+        {
+          "angle": 219.296875,
+          "distance": 568.75
+        },
+        {
+          "angle": 220.5,
+          "distance": 579.5
+        },
+        {
+          "angle": 225.296875,
+          "distance": 349.5
+        },
+        {
+          "angle": 226.84375,
+          "distance": 342.5
+        },
+        {
+          "angle": 227.609375,
+          "distance": 342.25
+        },
+        {
+          "angle": 228.90625,
+          "distance": 346.75
+        },
+        {
+          "angle": 230.390625,
+          "distance": 352.25
+        },
+        {
+          "angle": 233.78125,
+          "distance": 739.75
+        },
+        {
+          "angle": 234.9375,
+          "distance": 761.25
+        },
+        {
+          "angle": 254.90625,
+          "distance": 1303
+        },
+        {
+          "angle": 256.25,
+          "distance": 1301.25
+        },
+        {
+          "angle": 257.71875,
+          "distance": 1293.75
+        },
+        {
+          "angle": 259.078125,
+          "distance": 1289.75
+        },
+        {
+          "angle": 260.40625,
+          "distance": 1289.25
+        },
+        {
+          "angle": 261.84375,
+          "distance": 1286.5
+        },
+        {
+          "angle": 265.765625,
+          "distance": 1534.5
+        },
+        {
+          "angle": 268.640625,
+          "distance": 1290.25
+        },
+        {
+          "angle": 270.078125,
+          "distance": 1309.5
+        },
+        {
+          "angle": 271.375,
+          "distance": 1311.25
+        },
+        {
+          "angle": 272.75,
+          "distance": 1309.75
+        },
+        {
+          "angle": 275.5625,
+          "distance": 1158.5
+        },
+        {
+          "angle": 280.609375,
+          "distance": 1695
+        },
+        {
+          "angle": 281.96875,
+          "distance": 1700
+        },
+        {
+          "angle": 283.328125,
+          "distance": 1706.25
+        },
+        {
+          "angle": 284.671875,
+          "distance": 1715
+        },
+        {
+          "angle": 286.046875,
+          "distance": 1724.25
+        },
+        {
+          "angle": 287.421875,
+          "distance": 1732.75
+        },
+        {
+          "angle": 291.484375,
+          "distance": 1774.25
+        },
+        {
+          "angle": 292.8125,
+          "distance": 1795
+        },
+        {
+          "angle": 296.546875,
+          "distance": 797.75
+        },
+        {
+          "angle": 298.09375,
+          "distance": 785.25
+        },
+        {
+          "angle": 299.46875,
+          "distance": 778.25
+        },
+        {
+          "angle": 300.8125,
+          "distance": 778
+        },
+        {
+          "angle": 302.109375,
+          "distance": 782.25
+        },
+        {
+          "angle": 303.4375,
+          "distance": 788.75
+        },
+        {
+          "angle": 304.828125,
+          "distance": 799.75
+        },
+        {
+          "angle": 306.109375,
+          "distance": 817.25
+        },
+        {
+          "angle": 313.25,
+          "distance": 707.25
+        },
+        {
+          "angle": 314.640625,
+          "distance": 693
+        },
+        {
+          "angle": 317.53125,
+          "distance": 652.25
+        },
+        {
+          "angle": 320.515625,
+          "distance": 604
+        },
+        {
+          "angle": 326.09375,
+          "distance": 410.75
+        },
+        {
+          "angle": 327.484375,
+          "distance": 408.25
+        },
+        {
+          "angle": 328.78125,
+          "distance": 409.5
+        },
+        {
+          "angle": 329.9375,
+          "distance": 413.5
+        },
+        {
+          "angle": 331.40625,
+          "distance": 420.25
+        },
+        {
+          "angle": 337.921875,
+          "distance": 757.5
+        },
+        {
+          "angle": 339.484375,
+          "distance": 743.25
+        },
+        {
+          "angle": 345.046875,
+          "distance": 1926.5
+        },
+        {
+          "angle": 346.390625,
+          "distance": 1913.25
+        },
+        {
+          "angle": 347.828125,
+          "distance": 1903.5
+        },
+        {
+          "angle": 349.1875,
+          "distance": 1896.25
+        },
+        {
+          "angle": 350.5625,
+          "distance": 1889.5
+        }
+      ]
+    ]
+  }
