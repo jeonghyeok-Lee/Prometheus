@@ -35,30 +35,17 @@ public class PointMgr : MonoBehaviour
     private GameObject instance;                            // 포인트객체
 
     private GroupMgr groupMgr;                              // 그룹핑 객체 생성
-    private GameObject pointGroup;                          // 한 라인의 포인트들을 가지고 있을 pointGroup
-    private GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
-    private List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
+    public GameObject pointGroup;                          // 한 라인의 포인트들을 가지고 있을 pointGroup
+    public GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
+    public List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
+
+    public bool enablePoint;                                // 생성된 포인트를 활성화할지를 확인하는 변수
 
     private void Awake()
     {
-        LoadJson ldJson = new LoadJson("json/data00000");        // json 데이터를 로드
 
-/*        ldJson.setPath("json/data");*/
-        myData = ldJson.ScanData;                               // json 데이터 가져오기
-
-        mgrPosition = new Vector3();
-        instanceList = new List<GameObject>();              // 시작시 리스트 생성
-
-        groupMgr = new GroupMgr(null);        // 객체 초기화
-
-
-        // LineRenderer 컴포넌트 생성
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.red;
+        pointInit();
+        enablePoint = true;                                     // 기본값으로는 true로 초기화
 
     }
 
@@ -93,7 +80,41 @@ public class PointMgr : MonoBehaviour
             }
 
         }
-       
+
+        if (enablePoint)
+        {
+            OnEnablePoint(5);
+        }
+        
+
+    }
+
+    public void pointInit()
+    {
+        LoadJson ldJson = new LoadJson("json/data00001");        // json 데이터를 로드
+
+        /*        ldJson.setPath("json/data");*/
+        myData = ldJson.ScanData;                               // json 데이터 가져오기
+
+        mgrPosition = new Vector3();
+        instanceList = new List<GameObject>();                  // 시작시 리스트 생성
+
+        groupMgr = new GroupMgr(null);                          // 객체 초기화
+
+
+        // LineRenderer 컴포넌트 생성
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
+    }
+
+
+    // 시간을 할당 받아 해당 시간을 넘어가면 활성화를 진행
+    private void OnEnablePoint(int timer) 
+    {
         if (nowTime > 5)                                                                    // 5초가 지난 이후 현재 오브젝트를 순서대로 활성화
         {
             if (instanceList.Count > showNum)
@@ -105,7 +126,6 @@ public class PointMgr : MonoBehaviour
                 showNum++;
             }
         }
-
     }
 
 
@@ -124,9 +144,9 @@ public class PointMgr : MonoBehaviour
         groupMgr.setGroupPosition(lineGroup, new Vector3(0, 0, 0));
         groupMgr.addObjectToGroup(lineGroup, pointGroup);
 
-        for (int i = 0; i < myData.data.Length; i += 2)
+        for (int i = 0; i < myData.data.Length; i++)
         {
-            for(int j = 0; j < myData.data[i].Length; j += 2)
+            for(int j = 0; j < myData.data[i].Length; j++)
             {
                 this.transform.rotation = Quaternion.Euler(0, float.Parse(myData.data[i][j].angle), 0);                                  // 중심 위치 객체의 rotaion값 변경
 
@@ -148,7 +168,9 @@ public class PointMgr : MonoBehaviour
 
         }
         lineCount++;
-        y = (float)this.transform.position.y + (float)instance.transform.localScale.y;
+/*        y = (float)this.transform.position.y + (float)instance.transform.localScale.y;*/
+        y = (float)this.transform.position.y;
+
         pointGroup.transform.rotation = Quaternion.Euler(mdAngle, 0, 0);                                                          // 라인의 각도를 수정
     }
 
