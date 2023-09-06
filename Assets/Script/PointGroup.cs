@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroupMgr : MonoBehaviour
+public class PointGroup : MonoBehaviour
 {
     private Transform groupParent; // 그룹의 부모 Transform
     private List<GameObject> groups; // 그룹들을 저장하기 위한 리스트
 
-    public GroupMgr(Transform parent)
+    public PointGroup(Transform parent)
     {
         groupParent = parent;               // 그룹부모의 위치값을 세팅
         groups = new List<GameObject>();    

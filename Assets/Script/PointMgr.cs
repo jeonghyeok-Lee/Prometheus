@@ -34,7 +34,7 @@ public class PointMgr : MonoBehaviour
 
     private GameObject instance;                            // 포인트객체
 
-    private GroupMgr groupMgr;                              // 그룹핑 객체 생성
+    private PointGroup groupMgr;                              // 그룹핑 객체 생성
     public GameObject pointGroup;                          // 한 라인의 포인트들을 가지고 있을 pointGroup
     public GameObject lineGroup;                           // 라인 오브젝트를 그룹핑하기 위한 오브젝트    [관리를위함]
     public List<GameObject> instanceList;                  // 생성한 포인트들을 리스트형식
@@ -99,7 +99,7 @@ public class PointMgr : MonoBehaviour
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();                  // 시작시 리스트 생성
 
-        groupMgr = new GroupMgr(null);                          // 객체 초기화
+        groupMgr = new PointGroup(null);                          // 객체 초기화
 
 
         // LineRenderer 컴포넌트 생성
