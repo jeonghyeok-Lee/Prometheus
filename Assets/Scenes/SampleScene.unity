@@ -485,7 +485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &282277309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &532467032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,13 +1804,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1741685289}
   - component: {fileID: 1741685290}
+  - component: {fileID: 1741685291}
   m_Layer: 0
-  m_Name: objManager
+  m_Name: PointController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1741685289
 Transform:
   m_ObjectHideFlags: 0
@@ -1846,3 +1847,18 @@ MonoBehaviour:
   lineGroup: {fileID: 0}
   instanceList: []
   enablePoint: 0
+--- !u!114 &1741685291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741685288}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05daa4e7a25f244093d6eb934cda095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 3830834196864153635, guid: f5feb62d1c0721945bc6a861339682b8, type: 3}
+  player: {fileID: 282277308}
+  controllerAngle: 0
