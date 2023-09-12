@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using JsonSetting;
+using DataSetting;
 
 
 public class PointMgr : MonoBehaviour
@@ -91,10 +91,12 @@ public class PointMgr : MonoBehaviour
 
     public void pointInit()
     {
-        LoadJson ldJson = new LoadJson("json/data00001");        // json 데이터를 로드
+        // DataJson ldJson = new DataJson("json/data00001");        // json 데이터를 로드
+        DataController dataController = new DataController("json", "json/data00001");
 
         /*        ldJson.setPath("json/data");*/
-        myData = ldJson.ScanData;                               // json 데이터 가져오기
+        // myData = ldJson.ScanData;                               // json 데이터 가져오기
+        myData = dataController.LoadData();
 
         mgrPosition = new Vector3();
         instanceList = new List<GameObject>();                  // 시작시 리스트 생성
