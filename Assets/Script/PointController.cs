@@ -15,11 +15,14 @@ public class PointController : MonoBehaviour
     private GameObject pointGroup;                  // 포인트 그룹
     private GameObject lineGroup;                   // 라인 그룹
 
-    private const int LineObjectCount = 100;        // 라인 그룹당 포인트 개수
+    private const int LineObjectCount = 100;        // 라인 그룹당 포인트 그룹 개수
     private int lineCount = 1;                      // 라인 그룹의 개수 [ 몇 번째 라인인지 확인하기 위함 ]
 
     private const float DistanceRatio = 0.01f;      // 포인트 컨트롤러의 방향을 설정할 때 사용할 비율
     private Vector3 spanwPos;                       // 생성될 위치
+
+    private List<GameObject> instanceList;          // 생성된 포인트들을 담을 리스트
+    private int showPointNum = 0;                   // 현재 활성화된 포인트 인덱스
 
 
     ///////////////////////////////////////////////// 테스트용
@@ -31,6 +34,9 @@ public class PointController : MonoBehaviour
     private float limitTime = 60.0f;
     private int nowTime = 0;
 
+    // 레이더
+    private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
+
 
     private int testCount = 0;
     private Vector3 directionFromCenter;
@@ -38,6 +44,10 @@ public class PointController : MonoBehaviour
     void Awake()
     {
         SettingPointData();     // 포인트 데이터 초기화
+
+        instanceList = new List<GameObject>();
+
+        createLineRenderer();
 
         groupManager = new PointGroup(this.transform);
 
@@ -52,7 +62,7 @@ public class PointController : MonoBehaviour
         currentTime += Time.deltaTime;
         nowTime = (int)Math.Round(currentTime);
 
-        if (fps > 50)
+        if (fps < 100)
         {
             if (Math.Round(currentTime) > nowTime)
             {
@@ -63,6 +73,8 @@ public class PointController : MonoBehaviour
         {
             CreatePoint();
         }
+
+        OnEnablePoint(5);
 
     }
 
@@ -107,6 +119,7 @@ public class PointController : MonoBehaviour
         middle.transform.rotation = Quaternion.Euler(0, angle, 0);
 
         // 위치 설정 [포인터들이 생성될 때 중심점은 자리 변동이 없기 때문에 y값을 고정] [자동차 형태이기에]
+        // 추후 자동차가 아닌 다른 형태의 레이더를 만들 경우 y값을 고정하지 않고 자유롭게 설정할 수 있도록 변경
         middle.transform.position = new Vector3(middle.transform.position.x, 0.0f, middle.transform.position.z);
 
         // 포인트컨트롤러가 바라보는 방향에서 0.01f만큼 떨어진 위치를 계산
@@ -123,8 +136,11 @@ public class PointController : MonoBehaviour
     {
         // 포인트 생성 및 세팅
         GameObject instance = Instantiate(point);
-        instance.SetActive(true);
+        instance.SetActive(false);
         instance.transform.position = spanwPos;
+
+        // 생성된 포인트를 리스트에 추가
+        instanceList.Add(instance);
 
         // 생성된 포인트를 포인트 그룹의 자식으로 설정
         groupManager.addObjectToGroup(pointGroup, instance);
@@ -144,6 +160,7 @@ public class PointController : MonoBehaviour
 
         // 포인트 그룹을 라인 그룹의 자식으로 설정
         groupManager.addObjectToGroup(lineGroup, pointGroup);
+
         for (int i = 0; i < pointData.data.Length; i++)
         {
             for (int j = 0; j < pointData.data[i].Length; j++)
@@ -154,6 +171,28 @@ public class PointController : MonoBehaviour
         }
         lineCount++;
         pointGroup.transform.rotation = Quaternion.Euler(controllerAngle, 0, 0);
+    }
+
+    private void OnEnablePoint(int timer){
+        if(nowTime > timer){
+            if(instanceList.Count > showPointNum){
+                instanceList[showPointNum].SetActive(true);
+                lineRenderer.positionCount = 2;                                             // 활성화 할때마다 포지션포인트 2개를 생성 하고 세팅
+                lineRenderer.SetPosition(0, middle.transform.position);
+                lineRenderer.SetPosition(1, instanceList[showPointNum].transform.position);
+                showPointNum++;
+            }
+        }
+    }
+
+    private void createLineRenderer(){
+        // LineRenderer 컴포넌트 생성
+        lineRenderer = middle.AddComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
     }
 
 }
