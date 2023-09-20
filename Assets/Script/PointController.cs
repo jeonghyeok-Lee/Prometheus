@@ -33,12 +33,11 @@ public class PointController : MonoBehaviour
     private float currentTime = 0.0f;
     private float limitTime = 60.0f;
     private int nowTime = 0;
+    private int count = 0;
 
     // 레이더
     private LineRenderer lineRenderer;                      // 생성되는 포인트와 중심점을 연결시킬 선
 
-
-    private int testCount = 0;
     private Vector3 directionFromCenter;
 
     void Awake()
@@ -61,7 +60,7 @@ public class PointController : MonoBehaviour
 
         currentTime += Time.deltaTime;
         nowTime = (int)Math.Round(currentTime);
-
+        
         if (fps < 100)
         {
             if (Math.Round(currentTime) > nowTime)
@@ -173,6 +172,10 @@ public class PointController : MonoBehaviour
         pointGroup.transform.rotation = Quaternion.Euler(controllerAngle, 0, 0);
     }
 
+    /// <summary>
+    /// timer 시간 이후부터 포인트 활성화
+    /// </summary>
+    /// <param name="timer">타임</param>
     private void OnEnablePoint(int timer){
         if(nowTime > timer){
             if(instanceList.Count > showPointNum){
@@ -185,6 +188,9 @@ public class PointController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 라인 렌더러 생성
+    /// </summary>
     private void createLineRenderer(){
         // LineRenderer 컴포넌트 생성
         lineRenderer = middle.AddComponent<LineRenderer>();

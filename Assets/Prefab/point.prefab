@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7148275823859864463}
   - component: {fileID: 7937313687170444793}
   - component: {fileID: 6330603667825987937}
-  - component: {fileID: 7275940674015371325}
   - component: {fileID: 5821115074396312752}
   - component: {fileID: 310204520731090010}
   - component: {fileID: 6150071015605254859}
+  - component: {fileID: 4033779141731481364}
   m_Layer: 0
   m_Name: point
   m_TagString: Point
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7275940674015371325
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3830834196864153635}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!205 &5821115074396312752
 LODGroup:
   m_ObjectHideFlags: 0
@@ -140,7 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointNum: 0
-  isMiddle: 0
+  x: 0
+  y: 0
   isShow: 0
   pointTrans: {fileID: 0}
 --- !u!54 &6150071015605254859
@@ -159,3 +147,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &4033779141731481364
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830834196864153635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
