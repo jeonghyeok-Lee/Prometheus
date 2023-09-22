@@ -5,22 +5,22 @@ using DataSetting;
 
 public class PointGenerator : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particleSystem; // 파티클 시스템을 가리키는 참조
-
-    private ScanDataArray scanDataArray;                // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수]
-    private float distanceScale = 0.05f;                // 거리 스케일
+    [SerializeField] private PointParticle pointParticlePrefab; // PointParticle 프리팹
+    private ScanDataArray scanDataArray;                        // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수]
+    private float distanceScale = 0.01f;                        // 거리 스케일
 
     // Start is called before the first frame update
     void Start()
     {
         // 포인트 데이터 초기화
         SettingPointData();
-        
-        // 파티클 시스템을 초기화하고 포인트를 추가하는 함수 호출
-        InitializeParticleSystem();   
+
+        // PointParticle을 인스턴스화하고 초기화
+        PointParticle pointParticle = Instantiate(pointParticlePrefab);
+        pointParticle.InitializeParticleSystem();
 
         // 스캔 데이터를 파티클로 변환하여 추가
-        ConvertAndAddScanData();
+        ConvertAndAddScanData(pointParticle);
     }
 
     /// <summary>
@@ -29,30 +29,16 @@ public class PointGenerator : MonoBehaviour
     private void SettingPointData()
     {
         DataController dataController = new DataController("json", "json/data00001");
-
-        scanDataArray = dataController.LoadData();    // 데이터 로드
+        scanDataArray = dataController.LoadData(); // 데이터 로드
     }
 
-    void InitializeParticleSystem()
+    void ConvertAndAddScanData(PointParticle pointParticle)
     {
-        // 파티클 시스템 초기화
-        particleSystem.Clear(); // 기존 파티클 제거
-        particleSystem.Stop();  // 시스템 정지
-
-        // 시스템을 다시 시작하여 파티클을 표시
-        particleSystem.Play();
-    }
-
-    void ConvertAndAddScanData()
-    {
-        // 파티클 시스템 컴포넌트 가져오기
-        ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
-
         foreach (ScanData[] scanDataRow in scanDataArray.data)
         {
             foreach (ScanData scanData in scanDataRow)
             {
-                // 스캔 데이터로부터 거리와 각도 가져오기
+                // 스캔 데이터로부터 거리와 각도
                 float distance = float.Parse(scanData.distance) * distanceScale;
                 float angle = float.Parse(scanData.angle);
 
@@ -66,12 +52,13 @@ public class PointGenerator : MonoBehaviour
                     distance * Mathf.Sin(angleInRadians)
                 );
 
-                // 포인트 위치 설정
-                emitParams.position = pointPosition;
-
-                // 파티클 시스템에 포인트 추가
-                particleSystem.Emit(emitParams, 1);
+                // PointParticle을 사용하여 파티클 생성
+                pointParticle.CreateParticle(pointPosition);
             }
         }
+        Debug.Log("파티클 생성 완료");
+
+        // 파티클 시스템 중단
+        pointParticle.StopParticleSystem();
     }
 }
