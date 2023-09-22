@@ -8,26 +8,19 @@ public class PointGenerator : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem; // 파티클 시스템을 가리키는 참조
 
     private ScanDataArray scanDataArray;                // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수]
-
-    private float distanceScale = 0.1f;   // 거리 스케일
+    private float distanceScale = 0.05f;                // 거리 스케일
 
     // Start is called before the first frame update
     void Start()
     {
         // 포인트 데이터 초기화
         SettingPointData();
-
+        
         // 파티클 시스템을 초기화하고 포인트를 추가하는 함수 호출
         InitializeParticleSystem();   
 
         // 스캔 데이터를 파티클로 변환하여 추가
         ConvertAndAddScanData();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>
