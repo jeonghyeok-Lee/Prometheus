@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 860991308}
   - component: {fileID: 860991309}
   - component: {fileID: 860991310}
+  - component: {fileID: 860991311}
   m_Layer: 0
   m_Name: PointRender
   m_TagString: Untagged
@@ -295,10 +296,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419b669282f515b439237636e0323e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: 8040a724e5f7e164b8d80f153e84ce05, type: 3}
-  jsonFile2: {fileID: 4900000, guid: c728b615d5945f742b4b3cebe15c724a, type: 3}
+  jsonFile: {fileID: 4900000, guid: fe9b76d18e3ff674094d397c49f939b9, type: 3}
   pointCloudMaterial: {fileID: 2100000, guid: 1aa5427a1cd3a9a49b875615c92330b7, type: 2}
   distanceRatio: 0.01
+  depthScale: 0.01
+--- !u!114 &860991311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860991306}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0e365aae5052441970ac2e975b085f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: c50da7844647bd04f80870ec3cd8d140, type: 3}
+  pointCloudMaterial: {fileID: 2100000, guid: 1aa5427a1cd3a9a49b875615c92330b7, type: 2}
 --- !u!1 &998502202
 GameObject:
   m_ObjectHideFlags: 0

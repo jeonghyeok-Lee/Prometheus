@@ -8,6 +8,11 @@ public class PointGenerator : MonoBehaviour
     [SerializeField] private PointParticle pointParticlePrefab; // PointParticle 프리팹
     private ScanDataArray scanDataArray;                        // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수]
     private float distanceScale = 0.01f;                        // 거리 스케일
+    
+    /// <summary>
+    /// 테스트용 변수들
+    /// </summary>
+    private float testY = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +26,20 @@ public class PointGenerator : MonoBehaviour
 
         // 스캔 데이터를 파티클로 변환하여 추가
         ConvertAndAddScanData(pointParticle);
+    }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            // 포인트 데이터 초기화
+            SettingPointData();
+
+            // PointParticle을 인스턴스화하고 초기화
+            PointParticle pointParticle = Instantiate(pointParticlePrefab);
+            pointParticle.InitializeParticleSystem();
+
+            // 스캔 데이터를 파티클로 변환하여 추가
+            ConvertAndAddScanData(pointParticle);
+        }
     }
 
     /// <summary>
@@ -48,7 +67,7 @@ public class PointGenerator : MonoBehaviour
                 // 거리와 각도를 벡터로 변환하여 포인트 위치 계산
                 Vector3 pointPosition = new Vector3(
                     distance * Mathf.Cos(angleInRadians),
-                    0.0f, // 고정된 y 좌표 (자동차 형태를 유지)
+                    testY, // 고정된 y 좌표 (자동차 형태를 유지)
                     distance * Mathf.Sin(angleInRadians)
                 );
 
@@ -57,6 +76,8 @@ public class PointGenerator : MonoBehaviour
             }
         }
         Debug.Log("파티클 생성 완료");
+
+        testY += 0.1f;
 
         // 파티클 시스템 중단
         pointParticle.StopParticleSystem();

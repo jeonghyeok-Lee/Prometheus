@@ -25,6 +25,7 @@ public class PointCloudController : MonoBehaviour
 
         int width = jsonData.depth_data[0].Length;
         int height = jsonData.depth_data.Length;
+        Debug.Log("width : " + width + " height : " + height);
 
         // 포인트 클라우드 생성
         GameObject pointCloudObject = new GameObject("PointCloud");
@@ -35,26 +36,25 @@ public class PointCloudController : MonoBehaviour
         Vector3[] vertices = new Vector3[arraySize];
         int vertexIndex = 0;
 
-        // Unity의 월드 좌표에서 이미지 중앙으로 이동하는 벡터
-        Vector3 offset = new Vector3(-width / 2 * distanceRatio, -height / 2 * distanceRatio, 0);
-
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
             {
-                float depth = jsonData.depth_data[i][j] * distanceRatio;
+                float depth = jsonData.depth_data[i][j];
 
-                float x = j * distanceRatio;
-                float y = (height - i) * distanceRatio;
-                float z = depth;
+                float x = j;
+                float y = height - (height - i);
+                float z = depth*0.1f;
+                Vector3 worldCoordinate = new Vector3(x, y, z);
 
-                // Unity의 월드 좌표로 변환 후 offset 적용
-                Vector3 worldCoordinate = new Vector3(x, y, z) + offset;
+                
+                // Debug.Log("x : " + x + " y : " + y + " z : " + z);
 
                 vertices[vertexIndex] = worldCoordinate;
                 vertexIndex++;
             }
         }
+
 
         pointCloudMesh.vertices = vertices;
         pointCloudMesh.SetIndices(Enumerable.Range(0, arraySize).ToArray(), MeshTopology.Points, 0);
