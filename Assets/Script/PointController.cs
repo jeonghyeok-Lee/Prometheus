@@ -11,6 +11,7 @@ public class PointController : MonoBehaviour
     [SerializeField] private float controllerAngle;    // 현재 각도
 
     private ScanDataArray pointData;                // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수]
+    private ScanData2D scanData2D;                  // 포인트 데이터 [위치 데이터를 가지고 있는 배열 변수][테스트용]
     private PointGroup groupManager;                // 그룹 매니저
     private GameObject pointGroup;                  // 포인트 그룹
     private GameObject lineGroup;                   // 라인 그룹
@@ -85,6 +86,11 @@ public class PointController : MonoBehaviour
         DataController dataController = new DataController("json", "json/data00001");
 
         pointData = dataController.LoadData();    // 데이터 로드
+
+        DataController d = new DataController("json", "json/data01");
+        scanData2D = d.LoadData2();
+        Debug.Log(scanData2D.location);
+        Debug.Log(scanData2D.depth_data.Length);
     }
 
     private void CreatePointGroups()
@@ -127,7 +133,7 @@ public class PointController : MonoBehaviour
         // 포인트가 생성될 위치를 계산
         spanwPos = middle.transform.position + directionFromCenter;
     }
-
+    
     /// <summary>
     /// 포인트 초기화 함수
     /// </summary>

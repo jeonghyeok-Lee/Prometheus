@@ -15,6 +15,12 @@ namespace DataSetting{
         public ScanData[][] data;
     }
 
+    [System.Serializable]
+    public struct ScanData2D{
+        public string location;
+        public int[][] depth_data;
+    }
+
     /// <summary>
     /// 데이터 관리 클래스
     /// </summary>
@@ -49,7 +55,7 @@ namespace DataSetting{
             if(path != ""){
                 switch(type){
                     case "json":
-                        json = new DataJson(path);
+                        json = new DataJson(path,false);
                         break;
                     default:
                         break;
@@ -57,6 +63,21 @@ namespace DataSetting{
                 return json.ScanData;
             }
             return new ScanDataArray();
+        }
+
+
+        public ScanData2D LoadData2(){
+            if(path != ""){
+                switch(type){
+                    case "json":
+                        json = new DataJson(path,true);
+                        break;
+                    default:
+                        break;
+                }
+                return json.ScanData2D;
+            }
+            return new ScanData2D();
         }
 
         // 데이터 로드
