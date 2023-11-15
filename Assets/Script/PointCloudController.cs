@@ -18,9 +18,20 @@ public class PointCloudController : MonoBehaviour
 
     void Start()
     {
-        for(int i = 0; i < size; i++)
-        {
-            GeneratePointCloud(i);
+        // for(int i = 0; i < size; i++)
+        // {
+        //     GeneratePointCloud(i);
+        // }
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log("Space");
+            for(int i = 0; i < size; i++)
+            {
+                GeneratePointCloud(i);
+            }
         }
     }
 
