@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 
 public class PointCloudController : MonoBehaviour
 {
-    public TextAsset jsonFile; // JSON 파일을 할당하기 위한 변수
+    public TextAsset jsonFile;                  // JSON 파일을 할당하기 위한 변수
 
-    public Material pointCloudMaterial; // 포인트 클라우드를 렌더링할 Material
+    public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
 
-    public float distanceRatio = 0.01f; // 포인트 클라우드의 거리 비율
-    public float depthScale = 0.01f; // 포인트의 깊이에 대한 스케일 조정
+    public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
+    public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
 
-    public int size = 10;
+    public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
 
 
     void Start()
@@ -53,8 +53,7 @@ public class PointCloudController : MonoBehaviour
         Vector3[] vertices = new Vector3[arraySize];
         int vertexIndex = 0;
 
-        int hSize = height / size;
-        Debug.Log(now);    
+        int hSize = height / size; 
 
         for (int i =(hSize * now); i < (hSize * (now+1)); i++)
         {
