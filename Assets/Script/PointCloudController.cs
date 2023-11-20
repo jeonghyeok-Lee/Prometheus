@@ -27,14 +27,19 @@ public class PointCloudController : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log("Space");
-            for(int i = 0; i < size; i++)
-            {
-                GeneratePointCloud(i);
-            }
+            createPoint();
         }
     }
 
+    // 분할된 포인트 클라우드를 사이즈에 맞게 생성하는 함수
+    private void createPoint(){
+        for(int i = 0; i < size; i++)
+        {
+            GeneratePointCloud(i);
+        }
+    }
+
+    // json 데이터를 전달받아 포인트 클라우드를 생성하는 함수
     private void GeneratePointCloud(int now)
     {
         // JSON 파일 파싱
@@ -48,8 +53,8 @@ public class PointCloudController : MonoBehaviour
         GameObject pointCloudObject = new GameObject("PointCloud");
         pointCloudObject.transform.position = new Vector3(-1 * (width/2), -1 * (height/2), 750); // 카메라에서 10의 거리에 배치
 
-        Mesh pointCloudMesh = new Mesh();
-        int arraySize = width * height;
+        Mesh pointCloudMesh = new Mesh();   // 포인트 클라우드를 생성할 Mesh
+        int arraySize = width * height; 
         Vector3[] vertices = new Vector3[arraySize];
         int vertexIndex = 0;
 
@@ -65,11 +70,15 @@ public class PointCloudController : MonoBehaviour
                 float y = (height - i);
                 float z = depth;
 
+                // depth가 0이면 포인트 클라우드에 추가하지 않음
+                if(z == 0) continue;
+
                 vertices[vertexIndex] = new Vector3(x, y, z);
                 vertexIndex++;
             }
         }
 
+        // Mesh에 vertices 및 indices 할당
         pointCloudMesh.vertices = vertices;
         pointCloudMesh.SetIndices(Enumerable.Range(0, arraySize).ToArray(), MeshTopology.Points, 0);
 
@@ -77,6 +86,7 @@ public class PointCloudController : MonoBehaviour
         MeshFilter meshFilter = pointCloudObject.AddComponent<MeshFilter>();
         MeshRenderer meshRenderer = pointCloudObject.AddComponent<MeshRenderer>();
 
+        // Mesh 및 Material 할당
         meshFilter.mesh = pointCloudMesh;
         meshRenderer.material = pointCloudMaterial;
     }
