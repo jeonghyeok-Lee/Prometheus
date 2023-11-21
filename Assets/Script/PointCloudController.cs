@@ -11,10 +11,14 @@ public class PointCloudController : MonoBehaviour
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
     public Shader pointCloudShader;             // 포인트 클라우드를 렌더링할 Shader
 
+    public GameObject RCCar;         // 포인트 클라우드를 생성할 GameObject
+
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
+
+    private float distance = 50f;                     // 포인트 클라우드의 거리
 
     void Start()
     {
@@ -38,9 +42,16 @@ public class PointCloudController : MonoBehaviour
         int width = jsonData.depth_data[0].Length;
         int height = jsonData.depth_data.Length;
 
+        // RCCar의 위치, 방향, 회전 얻기
+        Vector3 carPosition = RCCar.transform.position;
+        Vector3 carForward = RCCar.transform.forward;
+        Quaternion carRotation = RCCar.transform.rotation;
+
         // 포인트 클라우드 생성
         GameObject pointCloudObject = new GameObject("PointCloud");
-        pointCloudObject.transform.position = new Vector3(-1 * (width/2), -1 * (height/2), 750); // 카메라에서 10의 거리에 배치
+        // pointCloudObject.transform.position = new Vector3(-1 * (width/2), -1 * (height/2), 750); // 카메라에서 의 거리에 배치
+        pointCloudObject.transform.position = carPosition + carForward * distance; // RCCar 바라보는 방향에서 distance만큼 떨어진 위치에 배치
+        pointCloudObject.transform.rotation = carRotation; // RCCar의 회전 정보 적용
 
         Mesh pointCloudMesh = new Mesh();                   // 포인트 클라우드를 생성할 Mesh
         int arraySize = width * height; 
@@ -77,7 +88,7 @@ public class PointCloudController : MonoBehaviour
                     colors[vertexIndex] = new Color(normalizedDepth, 1 - normalizedDepth, 0); // 깊이에 따라 색상 설정
                 }
 
-                vertices[vertexIndex] = new Vector3(x, y, z);                           // 포인트 클라우드의 위치를 설정
+                vertices[vertexIndex] = carPosition + carForward * distance + new Vector3(x, y, z); // RCCar 바라보는 방향에서 distance만큼 떨어진 위치에 포인트 클라우드의 위치를 설정
 
                 vertexIndex++;
             }
