@@ -9,16 +9,15 @@ public class PointCloudController : MonoBehaviour
     public TextAsset jsonFile;                  // JSON 파일을 할당하기 위한 변수
 
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
-    public Shader pointCloudShader;             // 포인트 클라우드를 렌더링할 Shader
 
-    public GameObject RCCar;         // 포인트 클라우드를 생성할 GameObject
+    public GameObject RCCar;                    // 포인트 클라우드를 생성할 GameObject
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
-
-    private float distance = 50f;                     // 포인트 클라우드의 거리
+    
+    private float distance = 50f;               // 포인트 클라우드의 거리
 
     void Start()
     {
@@ -100,9 +99,6 @@ public class PointCloudController : MonoBehaviour
         // MeshFilter 및 MeshRenderer 추가
         MeshFilter meshFilter = pointCloudObject.AddComponent<MeshFilter>();
         MeshRenderer meshRenderer = pointCloudObject.AddComponent<MeshRenderer>();
-
-        pointCloudMaterial.shader = pointCloudShader; // 포인트 클라우드의 Shader를 설정
-        pointCloudMaterial.SetColorArray("_Colors", colors); // 포인트 클라우드의 색상을 설정
 
         // Mesh 및 Material 할당
         meshFilter.mesh = pointCloudMesh;
