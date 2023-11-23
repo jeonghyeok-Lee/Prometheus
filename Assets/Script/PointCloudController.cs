@@ -10,18 +10,27 @@ public class PointCloudController : MonoBehaviour
 
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
 
-    public GameObject RCCar;                    // 포인트 클라우드를 생성할 GameObject
+    public GameObject RCCar;                    // 포인트 클라우드 생성 위치를 결정할 RCCar
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
+    public float limitDepth = 100f;            // 포인트 클라우드의 깊이 제한
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
-    
+
     private float distance = 50f;               // 포인트 클라우드의 거리
 
     void Start()
     {
         createPoint();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            createPoint();
+        }
     }
 
     // 분할된 포인트 클라우드를 사이즈에 맞게 생성하는 함수
@@ -41,22 +50,24 @@ public class PointCloudController : MonoBehaviour
         int width = jsonData.depth_data[0].Length;
         int height = jsonData.depth_data.Length;
 
-        // RCCar의 위치, 방향, 회전 얻기
-        Vector3 carPosition = RCCar.transform.position;
-        Vector3 carForward = RCCar.transform.forward;
-        Quaternion carRotation = RCCar.transform.rotation;
+        // RCCar의 위치, 방향, 회전 정보를 가져옴
+        Vector3 carPosition = RCCar.transform.position;     // 위치
+        Vector3 carForward = RCCar.transform.forward;       // 방향
+        Quaternion carRotation = RCCar.transform.rotation;  // 회전
+
+        Debug.Log("now: " + now + " " + carPosition + " " + carForward + " " + carRotation);
 
         // 포인트 클라우드 생성
         GameObject pointCloudObject = new GameObject("PointCloud");
-        // pointCloudObject.transform.position = new Vector3(-1 * (width/2), -1 * (height/2), 750); // 카메라에서 의 거리에 배치
-        pointCloudObject.transform.position = carPosition + carForward * distance; // RCCar 바라보는 방향에서 distance만큼 떨어진 위치에 배치
-        pointCloudObject.transform.rotation = carRotation; // RCCar의 회전 정보 적용
+        // pointCloudObject.transform.position = new Vector3(-1 * (width/2), 0 , 500); // 카메라에서 의 거리에 배치
+        pointCloudObject.transform.rotation = carRotation;                                          // RCCar의 회전 정보 적용
+        pointCloudObject.transform.position = carPosition + 500f * carForward;
+        // pointCloudObject.transform.position=  carPosition + new Vector3(-1 * (width/2), 0 , 500) + carForward;
 
         Mesh pointCloudMesh = new Mesh();                   // 포인트 클라우드를 생성할 Mesh
         int arraySize = width * height; 
 
         Vector3[] vertices = new Vector3[arraySize];        // 포인트 클라우드의 위치를 설정할 Vector3 배열
-        Color[] colors = new Color[arraySize];              // 포인트 클라우드의 색상을 설정할 Color 배열
         int vertexIndex = 0;
 
         int hSize = height / size; 
@@ -65,7 +76,7 @@ public class PointCloudController : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                float depth = jsonData.depth_data[i][j] * 0.1f;
+                float depth = jsonData.depth_data[i][j] * 0.01f;
 
                 float x = j;
                 
@@ -73,27 +84,14 @@ public class PointCloudController : MonoBehaviour
 
                 float z = depth;
 
-                // depth가 0이면 포인트 클라우드에 추가하지 않음
-                // if(z == 0) continue;
-
-                if (z == 0)
-                {
-                    colors[vertexIndex] = Color.blue;
-                }
-                else
-                {
-                    // depth에 따라 색상 설정 (여기서는 빨간색을 강조)
-                    float normalizedDepth = Mathf.Clamp01(z / (307200f*0.1f)); // 정규화된 깊이 값 (0~1)
-                    colors[vertexIndex] = new Color(normalizedDepth, 1 - normalizedDepth, 0); // 깊이에 따라 색상 설정
-                }
-
-                vertices[vertexIndex] = carPosition + carForward * distance + new Vector3(x, y, z); // RCCar 바라보는 방향에서 distance만큼 떨어진 위치에 포인트 클라우드의 위치를 설정
-
+                // depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
+                if(z == 0 || z > limitDepth || z < 10) continue;
+                
+                vertices[vertexIndex] = new Vector3(x - (width/2f),y,z);
                 vertexIndex++;
             }
         }
-        pointCloudMesh.vertices = vertices;
-        pointCloudMesh.colors = colors;      
+        pointCloudMesh.vertices = vertices;  
         pointCloudMesh.SetIndices(Enumerable.Range(0, arraySize).ToArray(), MeshTopology.Points, 0);
 
         // MeshFilter 및 MeshRenderer 추가
