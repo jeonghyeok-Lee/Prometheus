@@ -9,17 +9,14 @@ public class PointCloudController : MonoBehaviour
     public TextAsset jsonFile;                  // JSON 파일을 할당하기 위한 변수
 
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
-
-    public GameObject RCCar;                    // 포인트 클라우드 생성 위치를 결정할 RCCar
-    public Car car;                             // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 스크립트
-    
+    public Car car;                             // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 클래스
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
     public float limitDepth = 500f;            // 포인트 클라우드의 깊이 제한
     
     // RCCar와 이미지 사이의 거리
-    public float distanceFromRCCar = 0f;      // 포인트 클라우드의 거리
+    public float distanceFromCar = 0f;          // 포인트 클라우드의 거리
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
 
@@ -28,7 +25,6 @@ public class PointCloudController : MonoBehaviour
     void Start()
     {
         createPoint();
-        Debug.Log(car.CarPosition + " " + car.CarForward + " " + car.CarRotation);
     }
 
     void Update()
@@ -57,16 +53,14 @@ public class PointCloudController : MonoBehaviour
         int height = jsonData.depth_data.Length;
 
         // RCCar의 위치, 방향, 회전 정보를 가져옴
-        Vector3 carPosition = RCCar.transform.position;     // 위치
-        Vector3 carForward = RCCar.transform.forward;       // 방향
-        Quaternion carRotation = RCCar.transform.rotation;  // 회전
-
-        Debug.Log("now: " + now + " " + carPosition + " " + carForward + " " + carRotation);
+        Vector3 carPosition = car.CarPosition;      // 위치
+        Vector3 carForward = car.CarForward;        // 방향
+        Quaternion carRotation = car.CarRotation;   // 회전
 
         // 포인트 클라우드 생성
         GameObject pointCloudObject = new GameObject("PointCloud");
         pointCloudObject.transform.rotation = carRotation;                                          // RCCar의 회전 정보 적용
-        pointCloudObject.transform.position = carPosition + distanceFromRCCar * carForward;
+        pointCloudObject.transform.position = carPosition + distanceFromCar * carForward;
 
         Mesh pointCloudMesh = new Mesh();                   // 포인트 클라우드를 생성할 Mesh
         int arraySize = width * height; 
