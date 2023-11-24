@@ -11,7 +11,7 @@ public class PointCloudController : MonoBehaviour
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
-    public float limitDepth = 500f;            // 포인트 클라우드의 깊이 제한
+    public float limitDepth = 500f;             // 포인트 클라우드의 깊이 제한
     
     // RCCar와 이미지 사이의 거리
     public float distanceFromCar = 0f;          // 포인트 클라우드의 거리
@@ -45,10 +45,10 @@ public class PointCloudController : MonoBehaviour
     private void GeneratePointCloud(int now)
     {
         // JSON 파일 파싱
-        PointData jsonData = dataController.getJsonData();
+        PointData jsonData = dataController.GetJsonData();
 
-        int width = dataController.getWidth();
-        int height = dataController.getHeight();
+        int width = dataController.GetWidth();
+        int height = dataController.GetHeight();
 
         // RCCar의 위치, 방향, 회전 정보를 가져옴
         Vector3 carPosition = car.CarPosition;      // 위치
@@ -97,7 +97,5 @@ public class PointCloudController : MonoBehaviour
         // Mesh 및 Material 할당
         meshFilter.mesh = pointCloudMesh;
         meshRenderer.material = pointCloudMaterial ;
-        
     }
-
 }

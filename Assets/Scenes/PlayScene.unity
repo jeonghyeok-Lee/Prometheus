@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ac3d2baefb3824c9d885bbf60c3a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: c1d98beb36382324bbc7b37d44c858e9, type: 3}
 --- !u!1 &1769990501
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,9 +742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419b669282f515b439237636e0323e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: c1d98beb36382324bbc7b37d44c858e9, type: 3}
   pointCloudMaterial: {fileID: 2100000, guid: 1aa5427a1cd3a9a49b875615c92330b7, type: 2}
   car: {fileID: 18828618}
+  dataController: {fileID: 1671808702}
   distanceRatio: 0.01
   depthScale: 0.01
   limitDepth: 1500

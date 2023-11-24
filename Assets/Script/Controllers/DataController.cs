@@ -22,22 +22,22 @@ public class DataController : MonoBehaviour
         
     }
 
-    public int getWidth()
+    public int GetWidth()
     {
         return width;
     }
 
-    public int getHeight()
+    public int GetHeight()
     {
         return height;
     }
 
     // getter/setter jsonFile
-    public PointData getJsonData()
+    public PointData GetJsonData()
     {
         return jsonData;
     }
-    public void setJsonFile(TextAsset jsonFile)
+    public void SetJsonFile(TextAsset jsonFile)
     {
         this.jsonFile = jsonFile;
     }
