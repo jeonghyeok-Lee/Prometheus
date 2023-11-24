@@ -699,9 +699,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonFile: {fileID: 4900000, guid: c1d98beb36382324bbc7b37d44c858e9, type: 3}
   pointCloudMaterial: {fileID: 2100000, guid: 1aa5427a1cd3a9a49b875615c92330b7, type: 2}
-  RCCar: {fileID: 18828613}
+  car: {fileID: 18828618}
   distanceRatio: 0.01
   depthScale: 0.01
   limitDepth: 1500
-  distanceFromRCCar: 500
+  distanceFromCar: 500
   size: 10
