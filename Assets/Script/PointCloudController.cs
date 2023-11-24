@@ -11,10 +11,15 @@ public class PointCloudController : MonoBehaviour
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
 
     public GameObject RCCar;                    // 포인트 클라우드 생성 위치를 결정할 RCCar
+    public Car car;                             // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 스크립트
+    
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
-    public float limitDepth = 100f;            // 포인트 클라우드의 깊이 제한
+    public float limitDepth = 500f;            // 포인트 클라우드의 깊이 제한
+    
+    // RCCar와 이미지 사이의 거리
+    public float distanceFromRCCar = 0f;      // 포인트 클라우드의 거리
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
 
@@ -23,6 +28,7 @@ public class PointCloudController : MonoBehaviour
     void Start()
     {
         createPoint();
+        Debug.Log(car.CarPosition + " " + car.CarForward + " " + car.CarRotation);
     }
 
     void Update()
@@ -59,10 +65,8 @@ public class PointCloudController : MonoBehaviour
 
         // 포인트 클라우드 생성
         GameObject pointCloudObject = new GameObject("PointCloud");
-        // pointCloudObject.transform.position = new Vector3(-1 * (width/2), 0 , 500); // 카메라에서 의 거리에 배치
         pointCloudObject.transform.rotation = carRotation;                                          // RCCar의 회전 정보 적용
-        pointCloudObject.transform.position = carPosition + 500f * carForward;
-        // pointCloudObject.transform.position=  carPosition + new Vector3(-1 * (width/2), 0 , 500) + carForward;
+        pointCloudObject.transform.position = carPosition + distanceFromRCCar * carForward;
 
         Mesh pointCloudMesh = new Mesh();                   // 포인트 클라우드를 생성할 Mesh
         int arraySize = width * height; 
@@ -76,7 +80,7 @@ public class PointCloudController : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                float depth = jsonData.depth_data[i][j] * 0.01f;
+                float depth = jsonData.depth_data[i][j] * 0.05f;
 
                 float x = j;
                 
@@ -85,7 +89,7 @@ public class PointCloudController : MonoBehaviour
                 float z = depth;
 
                 // depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
-                if(z == 0 || z > limitDepth || z < 10) continue;
+                if(z == 0 || z > limitDepth || z < 50) continue;
                 
                 vertices[vertexIndex] = new Vector3(x - (width/2f),y,z);
                 vertexIndex++;
