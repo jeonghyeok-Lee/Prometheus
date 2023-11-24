@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Newtonsoft.Json;
 
 public class PointCloudController : MonoBehaviour
 {
-    public TextAsset jsonFile;                  // JSON 파일을 할당하기 위한 변수
-
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
     public CarController car;                   // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 클래스
+    public DataController dataController;       // JSON 파일을 파싱하기 위한 DataController 클래스
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
@@ -47,10 +45,10 @@ public class PointCloudController : MonoBehaviour
     private void GeneratePointCloud(int now)
     {
         // JSON 파일 파싱
-        PointData jsonData = JsonConvert.DeserializeObject<PointData>(jsonFile.ToString());
+        PointData jsonData = dataController.getJsonData();
 
-        int width = jsonData.depth_data[0].Length;
-        int height = jsonData.depth_data.Length;
+        int width = dataController.getWidth();
+        int height = dataController.getHeight();
 
         // RCCar의 위치, 방향, 회전 정보를 가져옴
         Vector3 carPosition = car.CarPosition;      // 위치
