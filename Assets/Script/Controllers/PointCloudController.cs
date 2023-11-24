@@ -9,7 +9,7 @@ public class PointCloudController : MonoBehaviour
     public TextAsset jsonFile;                  // JSON 파일을 할당하기 위한 변수
 
     public Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
-    public Car car;                             // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 클래스
+    public CarController car;                   // RCCar의 위치, 방향, 회전 정보를 가져오기 위한 Car 클래스
 
     public float distanceRatio = 0.01f;         // 포인트 클라우드의 거리 비율
     public float depthScale = 0.01f;            // 포인트의 깊이에 대한 스케일 조정
@@ -47,7 +47,7 @@ public class PointCloudController : MonoBehaviour
     private void GeneratePointCloud(int now)
     {
         // JSON 파일 파싱
-        PointDataTest jsonData = JsonConvert.DeserializeObject<PointDataTest>(jsonFile.ToString());
+        PointData jsonData = JsonConvert.DeserializeObject<PointData>(jsonFile.ToString());
 
         int width = jsonData.depth_data[0].Length;
         int height = jsonData.depth_data.Length;
@@ -100,21 +100,6 @@ public class PointCloudController : MonoBehaviour
         meshFilter.mesh = pointCloudMesh;
         meshRenderer.material = pointCloudMaterial ;
         
-    }
-    
-    [System.Serializable]
-    public class PointDataTest
-    {
-        public Location location;
-        public int[][] depth_data;
-    }
-
-    [System.Serializable]
-    public class Location
-    {
-        public float x;
-        public float y;
-        public float z;
     }
 
 }
