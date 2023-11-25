@@ -6,7 +6,7 @@ using System.Linq;
 /// <summary>
 /// 포인트 클라우드를 생성하는 클래스
 /// </summary>
-public class PointCloudGenerator : MonoBehaviour
+public class PointCloudGenerator
 {
 	private float limitDepth;           // 포인트 클라우드의 깊이 제한
 	private float distanceFromCar;      // 포인트 클라우드와 RCCar 사이의 거리

@@ -15,9 +15,13 @@ public class PointCloudController : MonoBehaviour
 
     public int size = 10;                       // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
 
+    PointCloudGenerator generator;              // 포인트 클라우드를 생성하는 클래스
+
 
     void Start()
     {
+        // PointCloudGenerator 인스턴스 생성
+        generator = new PointCloudGenerator();
         CreatePointCloud();
     }
 
@@ -31,9 +35,6 @@ public class PointCloudController : MonoBehaviour
     // 분할된 포인트 클라우드를 사이즈에 맞게 생성하는 함수
     private void CreatePointCloud()
     {
-        // PointCloudGenerator 인스턴스 생성
-        PointCloudGenerator generator = new PointCloudGenerator();
-
         // Size에 따라 포인트 클라우드 생성
         for (int i = 0; i < size; i++)
         {
