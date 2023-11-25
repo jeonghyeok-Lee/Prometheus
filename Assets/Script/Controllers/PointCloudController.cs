@@ -67,8 +67,9 @@ public class PointCloudController : MonoBehaviour
         int vertexIndex = 0;
 
         int hSize = height / size; 
+        int startIndex = hSize * now;
 
-        for (int i =(hSize * now); i < (hSize * (now+1)); i++)
+        for (int i =startIndex; i < startIndex + hSize; i++)
         {
             for (int j = 0; j < width; j++)
             {
