@@ -1,0 +1,147 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+
+/// <summary>
+/// 포인트 클라우드를 생성하는 클래스
+/// </summary>
+public class PointCloudGenerator : MonoBehaviour
+{
+	private float limitDepth;           // 포인트 클라우드의 깊이 제한
+	private float distanceFromCar;      // 포인트 클라우드와 RCCar 사이의 거리
+	private int size;                   // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
+
+	/// <summary>
+    /// 현재 프레임(now)에 대한 포인트 클라우드를 생성
+    /// </summary>
+    /// <param name="now">현재 프레임 번호</param>
+    /// <param name="dataController">데이터 컨트롤러</param>
+    /// <param name="car">Car 스크립트</param>
+	/// <param name="pointCloudMaterial">포인트 클라우드를 렌더링할 Material</param>
+	/// <param name="limitDepth">포인트 클라우드의 깊이 제한</param>
+	/// <param name="distanceFromCar">포인트 클라우드와 RCCar 사이의 거리</param>
+	/// <param name="size">포인트 클라우드를 나눌 개수</param>
+	/// <returns>생성된 포인트 클라우드 오브젝트</returns>
+	public void GeneratePointCloud(int now, DataController dataController, CarController car, Material pointCloudMaterial, float limitDepth, float distanceFromCar, int size)
+    {
+        // JSON 파일 파싱
+        PointData jsonData = dataController.GetJsonData();
+
+        int width = dataController.GetWidth();
+        int height = dataController.GetHeight();
+
+        // RCCar의 위치, 방향, 회전 정보를 가져옴
+        Vector3 carPosition = car.CarPosition;      // 위치
+        Vector3 carForward = car.CarForward;        // 방향
+        Quaternion carRotation = car.CarRotation;   // 회전
+
+		this.limitDepth = limitDepth;
+		this.distanceFromCar = distanceFromCar;
+		this.size = size;
+
+        // 포인트 클라우드 생성
+        GameObject pointCloudObject = CreatePointCloudObject(carPosition, carForward, carRotation);
+        Mesh pointCloudMesh = CreatePointCloudMesh(jsonData, width, height, now);
+
+        SetMeshAndMaterial(pointCloudObject, pointCloudMesh);
+    }
+
+	/// <summary>
+	/// Car의 위치 및 방향을 기반으로 포인트 클라우드 오브젝트를 생성
+	/// </summary>
+	/// <param name="carPosition">Car의 위치</param>
+	/// <param name="carForward">Car의 방향</param>
+	/// <param name="carRotation">Car의 회전값</param>
+	/// <returns>생성된 포인트 클라우드 오브젝트(포인트들을 가지고 있는 오브젝트)</returns>
+	private GameObject CreatePointCloudObject(Vector3 carPosition, Vector3 carForward, Quaternion carRotation)
+	{
+		GameObject pointCloudObject = new GameObject("PointCloud");
+		pointCloudObject.transform.rotation = carRotation;
+		pointCloudObject.transform.position = carPosition + distanceFromCar * carForward;
+		return pointCloudObject;
+	}
+
+	/// <summary>
+	/// JSON 데이터를 기반으로 포인트 클라우드 메쉬를 생성
+	/// </summary>
+	/// <param name="jsonData">포인트 클라우드 데이터를 담고 있는 JSON 객체</param>
+	/// <param name="width">포인트 클라우드의 가로 크기</param>
+	/// <param name="height">포인트 클라우드의 세로 크기</param>
+	/// <param name="now">현재 프레임 번호</param>
+	/// <returns>생성된 포인트 클라우드 Mesh</returns>
+	private Mesh CreatePointCloudMesh(PointData jsonData, int width, int height, int now)
+	{
+		Mesh pointCloudMesh = new Mesh();
+		int arraySize = width * height;
+
+		Vector3[] vertices = new Vector3[arraySize]; // 포인트 클라우드의 위치를 설정할 Vector3 배열
+		Color[] colors = new Color[arraySize];       // 각 포인트의 색상을 저장할 배열
+
+		int hSize = height / size;
+		int startIndex = hSize * now;
+
+		int vertexIndex = 0;
+
+		for (int i = startIndex; i < startIndex + hSize; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				float depth = jsonData.depth_data[i][j] * 0.05f;
+
+				float x = j;
+				float y = (height - i);
+				float z = depth;
+
+				// depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
+				if (z == 0 || z > limitDepth || z < 50) continue;
+
+				vertices[vertexIndex] = new Vector3(x - (width / 2f), y, z);
+
+				// 색상은 GetPointColor 함수를 이용하여 설정
+				colors[vertexIndex] = GetPointColor(depth);
+
+				vertexIndex++;
+			}
+		}
+
+		pointCloudMesh.vertices = vertices;
+		pointCloudMesh.colors = colors;
+		pointCloudMesh.SetIndices(Enumerable.Range(0, arraySize).ToArray(), MeshTopology.Points, 0);
+
+		return pointCloudMesh;
+	}
+
+	/// <summary>
+	/// 포인트 클라우드 오브젝트에 Mesh와 Material을 설정
+	/// </summary>
+    /// <param name="pointCloudObject">Mesh 및 Material이 설정될 포인트 클라우드 오브젝트</param>
+    /// <param name="pointCloudMesh">포인트 클라우드 Mesh</param>
+	private void SetMeshAndMaterial(GameObject pointCloudObject, Mesh pointCloudMesh)
+	{
+		MeshFilter meshFilter = pointCloudObject.AddComponent<MeshFilter>();
+		MeshRenderer meshRenderer = pointCloudObject.AddComponent<MeshRenderer>();
+
+		meshFilter.mesh = pointCloudMesh;
+
+		// 랜덤한 깊이에 따라 다른 색상 생성
+        Color randomDepthColor = GetPointColor(Random.Range(0f, limitDepth));
+
+		// Material 생성 및 설정
+		Material pointCloudMaterial = new Material(Shader.Find("Standard"));
+		pointCloudMaterial.color = randomDepthColor;
+		meshRenderer.material = pointCloudMaterial;
+	}
+
+	/// <summary>
+	/// 깊이(depth)에 따라 색상을 반환
+	/// </summary>
+	/// <param name="depth">깊이 값</param>
+	/// <returns></returns>
+	private Color GetPointColor(float depth)
+    {
+        // 예시: 깊이 값이 낮을수록 파란색, 높을수록 노란색
+        float normalizedDepth = Mathf.InverseLerp(0f, limitDepth, depth);
+        return Color.Lerp(Color.blue, Color.yellow, normalizedDepth);
+    }
+}
