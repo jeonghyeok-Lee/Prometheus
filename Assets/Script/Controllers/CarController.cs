@@ -9,22 +9,12 @@ public class CarController : MonoBehaviour
     private Vector3 carForward;     // 방향
     private Quaternion carRotation; // 회전
 
-    // Start is called before the first frame update
-    void Start()
+    public CarController(Transform carTransform)
     {
-        carTransform = GetComponent<Transform>();   // RCCar의 Transform을 가져옴
+        this.carTransform = carTransform;
         carPosition = carTransform.position;
-        carRotation = carTransform.rotation;
         carForward = carTransform.forward;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        carPosition = carTransform.position;
         carRotation = carTransform.rotation;
-        carForward = carTransform.forward;
     }
 
     // getter/setter
