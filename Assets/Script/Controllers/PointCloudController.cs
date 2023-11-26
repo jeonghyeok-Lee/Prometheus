@@ -26,7 +26,7 @@ public class PointCloudController
         // 포인트 클라우드를 생성하는 클래스 생성
         generator = new PointCloudGenerator();
         
-        pointState = new PointState(32000f, 0f, 10, 0.05f);      // 포인트 클라우드 상태 정보 클래스 생성
+        pointState = new PointState(1500f, 0f, 10, 0.05f);      // 포인트 클라우드 상태 정보 클래스 생성
         generator.PointState = pointState;                      // 포인트 클라우드 생성 클래스에 상태 정보 클래스 설정
         
         // generator.LimitDepth = limitDepth;

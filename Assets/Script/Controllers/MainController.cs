@@ -23,6 +23,8 @@ public class MainController : MonoBehaviour
     /// 테스트용 변수
     /// </summary>
     int i = 1;
+    private int count;  // json 파일의 개수
+    private bool isRunning = false; // 포인트 클라우드 생성 중인지 확인하는 변수
 
     // Start is called before the first frame update
     void Start()
@@ -32,29 +34,45 @@ public class MainController : MonoBehaviour
         dataController = new DataController();
 
         // pointCloudController.CreatePointCloud(dataController, carController);
+        count = dataController.GetFileCount();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            isRunning = !isRunning; // 시작/정지
+            
+            if(isRunning){
+                StartCoroutine(CreatePointsCoroutine());
+            }
+        }
+    }
+    
+    /// <summary>
+    /// 포인트 클라우드 생성 코루틴
+    /// </summary>
+    IEnumerator CreatePointsCoroutine(){
+        while (i < count)
+        {
+            // 파일 이름 설정 및 JSON 데이터 가져오기
             dataController.SetJsonData("depth_data_" + i);
-            if(i < 4){
-                i++;
-            }
-            else{
-                i = 1;
-            }
             jsonData = dataController.GetJsonData();
             Location location = jsonData.location;
 
-            // RCCar 데이터를 json 파일의 location 정보로 변경
+            // RCCar 위치 및 회전 업데이트
             carController.CarPosition = new Vector3(location.x, location.y, location.z);
             carController.CarRotation = Quaternion.Euler(0, location.r, 0);
             carController.CarForward = car.forward;
 
             // 포인트 클라우드 생성
             pointCloudController.CreatePointCloud(dataController, carController);
+
+            // 1초 기다림
+            yield return new WaitForSeconds(1f);
+
+            // i 증가 및 wrap-around
+            i = (i % count) + 1;
         }
     }
 }
