@@ -1,80 +1,44 @@
 Shader "Custom/PointCloudShader"
 {
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" { }
+    Properties {
+        _Color ("Main Color", Color) = (.5,.5,.5,1)
+        _OutlineColor ("Outline Color", Color) = (1,0,0,1)
+        _Outline ("Outline width", Range (0.002, 0.1)) = 0.005
+        _PointSize ("Point Size", Range (0.1, 10.0)) = 1.0
+        _MainTex ("Base (RGB)", 2D) = "white" { }
     }
+    SubShader {
+        Tags { "Queue"="Overlay" }
+        LOD 100
 
-    SubShader
-    {
-        Tags { "Queue" = "Overlay" }
+        CGPROGRAM
+        #pragma surface surf Lambert
 
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma exclude_renderers gles xbox360 ps3
-            ENDCG
+        struct Input {
+            float2 uv_MainTex;
+        };
+
+        sampler2D _MainTex;
+
+        fixed4 _Color;
+        fixed4 _OutlineColor;
+        float _Outline;
+        float _PointSize;
+
+        void surf(Input IN, inout SurfaceOutput o) {
+            fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+            o.Albedo = c.rgb;
+
+            // Add outline
+            fixed alpha = tex2D(_MainTex, IN.uv_MainTex).a;
+            fixed4 outColor = (_Outline > 0) ? _OutlineColor : c;
+            o.Alpha = lerp(alpha, outColor.a, _Outline);
+
+            // Adjust point size using Material value
+            float pointSize = _PointSize;
+            o.Vertex = o.Vertex * pointSize;
         }
+        ENDCG
     }
-    
-    SubShader
-    {
-        Tags { "Queue" = "Overlay" }
-
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma exclude_renderers gles xbox360 ps3
-            ENDCG
-        }
-        
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma exclude_renderers gles xbox360 ps3
-            ENDCG
-            CGPROGRAM
-            #pragma fragment frag
-            ENDCG
-        }
-    }
+    FallBack "Diffuse"
 }
-
-CGPROGRAM
-#pragma target 3.0
-
-#include "UnityCG.cginc"
-
-struct appdata
-{
-    float4 vertex : POSITION;
-    float4 color : COLOR;
-};
-
-struct v2f
-{
-    float4 pos : POSITION;
-    float4 color : COLOR;
-};
-
-uniform float _LimitDepth;
-
-v2f vert(appdata v)
-{
-    v2f o;
-    o.pos = UnityObjectToClipPos(v.vertex);
-    o.color = v.color;
-    return o;
-}
-
-fixed4 frag(v2f i) : COLOR
-{
-    // 포인트의 깊이값을 사용하여 색상 계산
-    float normalizedDepth = i.pos.z / _LimitDepth;
-    fixed4 col = lerp(fixed4(0, 0, 1, 1), fixed4(1, 1, 0, 1), normalizedDepth);
-    return col * i.color;
-}
-ENDCG

@@ -19,6 +19,18 @@ public class PointCloudGenerator
 	private int size;                   // 원활한 출력을 위한 포인트 클라우드를 나눌 개수
     private float pointRatio;             // 포인트 클라우드 크기 비율
 
+	private Color[] colors;			 // 포인트 클라우드의 색상
+
+	public PointCloudGenerator()
+	{
+		colors = new Color[2];
+		
+		// colors[0] = new Color(7f/255f, 20f/255f, 128f/255f, 255f/255f);
+		// colors[1] = new Color(128f/255f, 128f/255f, 7f/255f, 255f/255f);
+		colors[0] = Color.blue;
+		colors[1] = Color.yellow;
+	}
+
 	public PointState PointState
 	{
 		get { return pointState; }
@@ -91,13 +103,14 @@ public class PointCloudGenerator
 	private Mesh CreatePointCloudMesh(PointData jsonData, int width, int height, int now)
 	{
 		Mesh pointCloudMesh = new Mesh();
-		int arraySize = width * height;
-
-		Vector3[] vertices = new Vector3[arraySize]; // 포인트 클라우드의 위치를 설정할 Vector3 배열
-		Color[] colors = new Color[arraySize];       // 각 포인트의 색상을 저장할 배열
 
 		int hSize = height / size;
 		int startIndex = hSize * now;
+
+		int arraySize = width * hSize;
+
+		Vector3[] vertices = new Vector3[arraySize]; // 포인트 클라우드의 위치를 설정할 Vector3 배열
+		Color[] colors = new Color[arraySize];       // 각 포인트의 색상을 저장할 배열
 
 		int vertexIndex = 0;
 
@@ -105,11 +118,11 @@ public class PointCloudGenerator
 		{
 			for (int j = 0; j < width; j++)
 			{
-				float depth = jsonData.depth_data[i][j]*0.05f;
+				float depth = jsonData.depth_data[i][j];
 
 				float x = j * pointRatio;
 				float y = (height - i) * pointRatio;
-				float z = depth;
+				float z = depth * pointRatio;
 
 				// depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
 				if (z == 0 || z > limitDepth || z < 50) continue;
@@ -129,7 +142,6 @@ public class PointCloudGenerator
 
 		return pointCloudMesh;
 	}
-
 	/// <summary>
 	/// 포인트 클라우드 오브젝트에 Mesh와 Material을 설정
 	/// </summary>
@@ -142,12 +154,10 @@ public class PointCloudGenerator
 
 		meshFilter.mesh = pointCloudMesh;
 
-		// 랜덤한 깊이에 따라 다른 색상 생성
-        Color randomDepthColor = GetPointColor(Random.Range(0f, limitDepth));
-
 		// Material 생성 및 설정
-		Material pointCloudMaterial = new Material(Shader.Find("Standard"));
+		Material pointCloudMaterial = new Material(Shader.Find("Custom/PointCloudShader"));
 		meshRenderer.material = pointCloudMaterial;
+
 	}
 
 	/// <summary>
@@ -157,8 +167,7 @@ public class PointCloudGenerator
 	/// <returns></returns>
 	private Color GetPointColor(float depth)
     {
-        // 예시: 깊이 값이 낮을수록 파란색, 높을수록 노란색
         float normalizedDepth = Mathf.InverseLerp(0f, limitDepth, depth);
-        return Color.Lerp(Color.blue, Color.yellow, normalizedDepth);
+        return Color.Lerp(colors[0], colors[1], normalizedDepth);
     }
 }
