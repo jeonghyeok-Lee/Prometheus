@@ -21,18 +21,27 @@ public class CarController : MonoBehaviour
     public Vector3 CarPosition
     {
         get { return carPosition; }
-        set { carPosition = value; }
+        set { 
+            carPosition = value; 
+            carTransform.position = carPosition;
+        }
     }
 
     public Quaternion CarRotation
     {
         get { return carRotation; }
-        set { carRotation = value; }
+        set { 
+            carRotation = value; 
+            carTransform.rotation = carRotation;
+        }
     }
 
     public Vector3 CarForward
     {
         get { return carForward; }
-        set { carForward = value; }
+        set { 
+            carForward = value; 
+            carTransform.forward = carForward;
+        }
     }
 }

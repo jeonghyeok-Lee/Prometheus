@@ -38,7 +38,7 @@ public class PointCloudController
         generator = new PointCloudGenerator();
 
         limitDepth = 500f;
-        distanceFromCar = 300f;
+        distanceFromCar = 500f;
         size = 10;
 
         this.pointCloudMaterial = pointCloudMaterial;

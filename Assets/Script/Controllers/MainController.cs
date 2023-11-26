@@ -12,11 +12,17 @@ public class MainController : MonoBehaviour
     /// pointCloud 관련 변수
     /// </summary>
     public Material pointCloudMaterial;                 //  포인트 클라우드를 렌더링할 Material
+    private PointData jsonData;
 
     /// <summary>
     /// RC카 관련 변수
     /// </summary>
     public Transform car;                              //  RCCar 오브젝트
+
+    /// <summary>
+    /// 테스트용 변수
+    /// </summary>
+    int i = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +31,30 @@ public class MainController : MonoBehaviour
         carController = new CarController(car);
         dataController = new DataController();
 
-        pointCloudController.CreatePointCloud(dataController, carController);
+        // pointCloudController.CreatePointCloud(dataController, carController);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            dataController.SetJsonData("depth_data_" + i);
+            if(i < 4){
+                i++;
+            }
+            else{
+                i = 1;
+            }
+            jsonData = dataController.GetJsonData();
+            Location location = jsonData.location;
+
+            // RCCar 데이터를 json 파일의 location 정보로 변경
+            carController.CarPosition = new Vector3(location.x, location.y, location.z);
+            carController.CarRotation = Quaternion.Euler(0, location.r, 0);
+            carController.CarForward = car.forward;
+
+            // 포인트 클라우드 생성
+            pointCloudController.CreatePointCloud(dataController, carController);
+        }
     }
 }

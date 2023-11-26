@@ -60,5 +60,25 @@ public class DataController
 
     }
 
+    /// <summary>
+    /// filePath 경로에 존재하는 파일들의 이름을 반환
+    /// </summary>
+    /// <returns>string[]타입의 파일 이름 반환</returns>
+    public string[] GetFileList(){
+        string[] files = System.IO.Directory.GetFiles("Assets/Resources/" + filePath);
+        return files;
+    }
+    
+    /// <summary>
+    /// filePath 경로에 존재하는 파일들의 개수를 반환
+    /// </summary>
+    /// <returns>파일 개수 반환</returns>
+    public int GetFileCount(){
+        int fileCount = GetFileList().Length;
+
+        // .meta 파일 제외
+        return fileCount/2;
+    }
+
 
 }
