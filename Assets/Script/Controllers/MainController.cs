@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
+using System;
 
 public class MainController : MonoBehaviour
 {
@@ -53,7 +55,8 @@ public class MainController : MonoBehaviour
     /// 포인트 클라우드 생성 코루틴
     /// </summary>
     IEnumerator CreatePointsCoroutine(){
-        while (i < count)
+
+        while (i < count && isRunning)
         {
             // 파일 이름 설정 및 JSON 데이터 가져오기
             dataController.SetJsonData("depth_data_" + i);
@@ -61,18 +64,19 @@ public class MainController : MonoBehaviour
             Location location = jsonData.location;
 
             // RCCar 위치 및 회전 업데이트
-            carController.CarPosition = new Vector3(location.x, location.y, location.z);
-            carController.CarRotation = Quaternion.Euler(0, location.r, 0);
+            carController.CarPosition = new Vector3(location.y * 100f, 0.5f, location.x * -100f);
+            carController.CarRotation = Quaternion.Euler(0, 360 - location.yaw , 0);
             carController.CarForward = car.forward;
 
             // 포인트 클라우드 생성
             pointCloudController.CreatePointCloud(dataController, carController);
 
-            // 1초 기다림
-            yield return new WaitForSeconds(1f);
+            // 0.5 초 기다림
+            yield return new WaitForSeconds(0.5f);
 
             // i 증가 및 wrap-around
             i = (i % count) + 1;
         }
     }
+
 }
