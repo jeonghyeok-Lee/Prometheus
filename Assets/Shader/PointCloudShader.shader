@@ -29,12 +29,11 @@ Shader "Custom/PointCloudShader"
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
 
-            // Add outline
             fixed alpha = tex2D(_MainTex, IN.uv_MainTex).a;
             fixed4 outColor = (_Outline > 0) ? _OutlineColor : c;
             o.Alpha = lerp(alpha, outColor.a, _Outline);
 
-            // Adjust point size using Material value
+            // 포인트 사이즈를 조정
             float pointSize = _PointSize;
             o.Vertex = o.Vertex * pointSize;
         }
