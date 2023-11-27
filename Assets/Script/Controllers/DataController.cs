@@ -16,7 +16,7 @@ public class DataController
 
     public DataController()
     {
-        filePath = "json/data1/";
+        filePath = "json/data3/";
         SetJsonData("depth_data_1");
     }
 
@@ -47,12 +47,11 @@ public class DataController
     /// <param name="fileName">로드하고자 하는 jsonFile의 이름</param>
     public void SetJsonData(string fileName){
         jsonFile = Resources.Load<TextAsset>(filePath + fileName);
-
+        
         if(jsonFile != null){
             jsonData = JsonConvert.DeserializeObject<PointData>(jsonFile.ToString());
-
-            width = jsonData.depth_data[0].Length;
-            height = jsonData.depth_data.Length;
+            width = jsonData.depth_frame[0].Length;
+            height = jsonData.depth_frame.Length;
         }
         else{
             Debug.LogError("JSON 파일 로드에 실패하였습니다. 경로: "+ filePath + fileName);
