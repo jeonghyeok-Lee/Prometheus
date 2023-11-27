@@ -118,14 +118,14 @@ public class PointCloudGenerator
 		{
 			for (int j = 0; j < width; j++)
 			{
-				float depth = jsonData.depth_data[i][j];
+				float depth = jsonData.depth_frame[i][j];
 
 				float x = j * pointRatio;
 				float y = (height - i) * pointRatio;
 				float z = depth * pointRatio;
 
 				// depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
-				if (z == 0 || z > limitDepth || z < 50) continue;
+				if (z > 0) continue;
 
 				vertices[vertexIndex] = new Vector3(x - (width / 2f) * pointRatio, y, z);
 
@@ -156,6 +156,7 @@ public class PointCloudGenerator
 
 		// Material 생성 및 설정
 		Material pointCloudMaterial = new Material(Shader.Find("Custom/PointCloudShader"));
+		pointCloudMaterial.mainTextureScale = new Vector2(5.0f, 5.0f);
 		meshRenderer.material = pointCloudMaterial;
 
 	}

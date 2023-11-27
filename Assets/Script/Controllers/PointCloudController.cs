@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// 포인트 클라우드를 관리하는 클래스
+/// </summary>
 public class PointCloudController
 {
     private Material pointCloudMaterial;         // 포인트 클라우드를 렌더링할 Material
@@ -26,7 +29,7 @@ public class PointCloudController
         // 포인트 클라우드를 생성하는 클래스 생성
         generator = new PointCloudGenerator();
         
-        pointState = new PointState(1500f, 0f, 10, 0.05f);      // 포인트 클라우드 상태 정보 클래스 생성
+        pointState = new PointState(150f, 0f, 10, .08f);      // 포인트 클라우드 상태 정보 클래스 생성
         generator.PointState = pointState;                      // 포인트 클라우드 생성 클래스에 상태 정보 클래스 설정
         
         // generator.LimitDepth = limitDepth;
@@ -41,13 +44,14 @@ public class PointCloudController
     {
         GameObject pointCloudObject = new GameObject("PointCloud" + pointCloudObjectCount++);
         pointCloudObject.transform.position = Vector3.zero;
-
-        Debug.Log(1);
+        
         // Size에 따라 포인트 클라우드 생성
         for (int i = 0; i < pointState.Size; i++)
         {
             generator.GeneratePointCloud(i, dataController, car, pointCloudMaterial);
             
+            // 생성된 오브젝트의 회전값을 generator로 만들어진 pointCloudObject의 회전값으로 설정
+            pointCloudObject.transform.rotation = generator.PointCloudObject.transform.rotation;   
             // 생성된 포인트 클라우드를 pointCloudObject의 자식으로 설정
             generator.PointCloudObject.transform.parent = pointCloudObject.transform;
         }

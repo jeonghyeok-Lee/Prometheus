@@ -4,7 +4,7 @@
 public class PointData
 {
     public Location location;   // 자동차의 위치, 회전 정보
-    public int[][] depth_data;  // 포인트의 깊이 데이터
+    public int[][] depth_frame;  // 포인트의 깊이 데이터
 }
 // 자동차의 x,y,z값 저장
 [System.Serializable]
@@ -12,6 +12,5 @@ public class Location
 {
     public float x;
     public float y;
-    public float z;
-    public float r;
+    public float yaw;
 }
