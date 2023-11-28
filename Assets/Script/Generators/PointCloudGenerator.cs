@@ -21,14 +21,24 @@ public class PointCloudGenerator
 
 	private Color[] colors;			 // 포인트 클라우드의 색상
 
+
+	private int a = 0;
+
 	public PointCloudGenerator()
 	{
-		colors = new Color[2];
+		colors = new Color[10];
 		
 		// colors[0] = new Color(7f/255f, 20f/255f, 128f/255f, 255f/255f);
 		// colors[1] = new Color(128f/255f, 128f/255f, 7f/255f, 255f/255f);
 		colors[0] = Color.blue;
-		colors[1] = Color.yellow;
+		colors[1] = Color.red;
+		// colors[3] = Color.green;
+		// colors[4] = Color.yellow;
+		// colors[5] = Color.cyan;
+		// colors[6] = Color.magenta;
+		// colors[7] = Color.gray;
+		// colors[8] = Color.black;
+		// colors[9] = Color.white;
 	}
 
 	public PointState PointState
@@ -59,6 +69,7 @@ public class PointCloudGenerator
 	/// <returns>생성된 포인트 클라우드 오브젝트</returns>
 	public void GeneratePointCloud(int now, DataController dataController, CarController car, Material pointCloudMaterial)
     {
+		a = now;
         // JSON 파일 파싱
         PointData jsonData = dataController.GetJsonData();
 
@@ -116,21 +127,27 @@ public class PointCloudGenerator
 
 		for (int i = startIndex; i < startIndex + hSize; i++)
 		{
+			float ratio =  (i* -0.1458f + 100f) / 100f;
+			// Debug.Log(ratio);
 			for (int j = 0; j < width; j++)
 			{
 				float depth = jsonData.depth_frame[i][j];
 
+				// float x = (j * pointRatio * ratio)  + (width / 2) - (j * pointRatio * ratio)/2;
+				// float x = (j - width/2) * pointRatio * ratio + width/2f*pointRatio;/
+				// float x = j * pointRatio * ratio;
 				float x = j * pointRatio;
 				float y = (height - i) * pointRatio;
 				float z = depth * pointRatio;
 
 				// depth가 0이면서 limitDepth보다 클 경우 해당 포인트는 포인트 클라우드에 추가하지 않음
-				if (z > 0) continue;
+				// if (z == 0 || z > limitDepth || z < 50)  continue;
+				if(z == 0) continue;
 
 				vertices[vertexIndex] = new Vector3(x - (width / 2f) * pointRatio, y, z);
+				colors[vertexIndex] = GetPointColor(z);
 
 				// 색상은 GetPointColor 함수를 이용하여 설정
-				colors[vertexIndex] = GetPointColor(z);
 
 				vertexIndex++;
 			}
@@ -154,9 +171,13 @@ public class PointCloudGenerator
 
 		meshFilter.mesh = pointCloudMesh;
 
+		// Color randomDepthColor = GetPointColor(Random.Range(0f, limitDepth));
+		// Color randomDepthColor = GetArrayColor(a);
+
 		// Material 생성 및 설정
 		Material pointCloudMaterial = new Material(Shader.Find("Custom/PointCloudShader"));
-		pointCloudMaterial.mainTextureScale = new Vector2(5.0f, 5.0f);
+		// pointCloudMaterial.color = randomDepthColor;
+		pointCloudMaterial.SetFloat("_DepthFactorStrength", 3f);
 		meshRenderer.material = pointCloudMaterial;
 
 	}
@@ -171,4 +192,63 @@ public class PointCloudGenerator
         float normalizedDepth = Mathf.InverseLerp(0f, limitDepth, depth);
         return Color.Lerp(colors[0], colors[1], normalizedDepth);
     }
+
+	// private Color GetTestPointColor(float depth)
+	// {
+	// 	float normalizedDepth = Mathf.InverseLerp(0f, limitDepth, depth);
+	// 	// 3등분을 위한 기준 값
+	// 	float redRangeEnd = 1f / 10f;
+	// 	float greenRangeEnd = 2f / 10f;
+	// 	float blueRangeEnd = 3f / 10f;
+	// 	float yellowRangeEnd = 4f / 10f;
+	// 	float whiteRangeEnd = 5f / 10f;
+	// 	float blackRangeEnd = 6f / 10f;
+	// 	float grayRangeEnd = 7f / 10f;
+	// 	float cyanRangeEnd = 8f / 10f;
+	// 	float magentaRangeEnd = 9f / 10f;
+	// 	float brownRangeEnd = 10f / 10f;
+		
+	// 	if (normalizedDepth <= redRangeEnd)
+	// 	{
+	// 		// 범위 0~redRangeEnd: 빨강
+	// 		return Color.green;
+	// 	}
+	// 	else if (normalizedDepth <= greenRangeEnd)
+	// 	{
+	// 		// 범위 redRangeEnd~greenRangeEnd: 초록
+	// 		return Color.red;
+	// 	}
+	// 	else if(normalizedDepth <= blueRangeEnd){
+	// 		return Color.blue;
+	// 	}
+	// 	else if(normalizedDepth <= yellowRangeEnd){
+	// 		return Color.yellow;
+	// 	}
+	// 	else if(normalizedDepth <= whiteRangeEnd){
+	// 		return Color.white;
+	// 	}
+	// 	else if(normalizedDepth <= blackRangeEnd){
+	// 		return Color.black;
+	// 	}
+	// 	else if(normalizedDepth <= grayRangeEnd){
+	// 		return Color.gray;
+	// 	}
+	// 	else if(normalizedDepth <= cyanRangeEnd){
+	// 		return Color.cyan;
+	// 	}
+	// 	else if(normalizedDepth <= magentaRangeEnd){
+	// 		return Color.magenta;
+	// 	}
+	// 	else if(normalizedDepth <= brownRangeEnd){
+	// 		return new Color(128f/255f, 128f/255f, 7f/255f, 255f/255f);
+	// 	}
+	// 	else{
+	// 		return Color.black;
+	// 	}
+	// }
+
+	private Color GetArrayColor(int index)
+	{
+		return colors[index];
+	}
 }
