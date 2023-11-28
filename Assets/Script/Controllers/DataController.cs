@@ -16,7 +16,7 @@ public class DataController
 
     public DataController()
     {
-        filePath = "json/data3/";
+        filePath = "json/data15/";
         SetJsonData("depth_data_1");
     }
 

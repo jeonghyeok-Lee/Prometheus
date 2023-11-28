@@ -12,5 +12,5 @@ public class Location
 {
     public float x;
     public float y;
-    public float yaw;
+    public float[] yaw;
 }

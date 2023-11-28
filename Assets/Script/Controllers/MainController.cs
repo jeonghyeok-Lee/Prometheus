@@ -43,11 +43,12 @@ public class MainController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isRunning = !isRunning; // 시작/정지
+            // isRunning = !isRunning; // 시작/정지
             
-            if(isRunning){
+            // if(isRunning){
+            //     StartCoroutine(CreatePointsCoroutine());
+            // }
                 StartCoroutine(CreatePointsCoroutine());
-            }
         }
     }
     
@@ -56,23 +57,45 @@ public class MainController : MonoBehaviour
     /// </summary>
     IEnumerator CreatePointsCoroutine(){
 
-        while (i < count && isRunning)
-        {
+        // while (i < count && isRunning)
+        // {
+        //     // 파일 이름 설정 및 JSON 데이터 가져오기
+        //     dataController.SetJsonData("depth_data_" + i);
+        //     jsonData = dataController.GetJsonData();
+        //     Location location = jsonData.location;
+
+        //     // RCCar 위치 및 회전 업데이트
+        //     carController.CarPosition = new Vector3(location.y, 0.15f, location.x * -1f);
+        //     carController.CarRotation = Quaternion.Euler(0, 360 - location.yaw , 0);
+        //     carController.CarForward = car.forward;
+
+        //     // 포인트 클라우드 생성
+        //     pointCloudController.CreatePointCloud(dataController, carController);
+
+        //     // 0.5 초 기다림
+        //     yield return new WaitForSeconds(0.1f);
+
+        //     // i 증가 및 wrap-around
+        //     i = (i % count) + 1;
+        // }
+        if(i < count){
             // 파일 이름 설정 및 JSON 데이터 가져오기
             dataController.SetJsonData("depth_data_" + i);
             jsonData = dataController.GetJsonData();
             Location location = jsonData.location;
 
             // RCCar 위치 및 회전 업데이트
-            carController.CarPosition = new Vector3(location.y * 100f, 0.5f, location.x * -100f);
-            carController.CarRotation = Quaternion.Euler(0, 360 - location.yaw , 0);
+            carController.CarPosition = new Vector3(location.y*0.01f, 0.15f, location.x * -0.01f);
+            // carController.CarRotation = Quaternion.Euler(0, 360 - location.yaw , 0);
+            Quaternion  q = new Quaternion(location.yaw[0], -location.yaw[2], location.yaw[1], location.yaw[3]);
+            carController.CarRotation = q;
             carController.CarForward = car.forward;
 
             // 포인트 클라우드 생성
             pointCloudController.CreatePointCloud(dataController, carController);
 
             // 0.5 초 기다림
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
 
             // i 증가 및 wrap-around
             i = (i % count) + 1;
