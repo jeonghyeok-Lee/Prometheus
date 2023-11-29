@@ -6,6 +6,8 @@ Shader "Custom/PointCloudShader"
         _Outline ("Outline width", Range (0.002, 0.1)) = 0.005
         _PointSize ("Point Size", Range (0.1, 10.0)) = 1.0
         _MainTex ("Base (RGB)", 2D) = "white" { }
+        _MaxDepth ("Max Depth", Range (0.1, 100.0)) = 10.0
+        _DepthFactorStrength ("Depth Factor Strength", Range (0.1, 5.0)) = 1.0
     }
     SubShader {
         Tags { "Queue"="Overlay" }
@@ -24,6 +26,8 @@ Shader "Custom/PointCloudShader"
         fixed4 _OutlineColor;
         float _Outline;
         float _PointSize;
+        float _MaxDepth;
+        float _DepthFactorStrength;
 
         void surf(Input IN, inout SurfaceOutput o) {
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
