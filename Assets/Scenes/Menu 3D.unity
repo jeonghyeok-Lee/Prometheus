@@ -651,8 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae918799e3dc47419a709804b499d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
-  label: {fileID: 0}
 --- !u!1 &390912955
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,17 +985,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 22400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
   m_PrefabInstance: {fileID: 928992391}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &524375988 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 11400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
-  m_PrefabInstance: {fileID: 928992391}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524375982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &524375990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,8 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af96ac950cd34b698715b74496940ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  button: {fileID: 524375988}
 --- !u!1 &546146672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,8 +1626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae918799e3dc47419a709804b499d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
-  label: {fileID: 0}
 --- !u!1 &720367737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,8 +1818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae918799e3dc47419a709804b499d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
-  label: {fileID: 0}
 --- !u!1 &874530932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,7 +2060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PrintText
+      value: PlayStart
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
