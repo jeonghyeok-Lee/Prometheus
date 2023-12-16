@@ -1,52 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIButtonEvent : MonoBehaviour
 {
-    private bool isEnable;                          // 현재 포인트들이 활성화 되고있는지 여부 확인
-    private GameObject objMgr;
-
-    // Start is called before the first frame update
-    void Start()
+    // 클릭한 오브젝트의 자식 오브젝트 중 Text 컴포넌트를 가진 오브젝트의 text를 가져옴
+    public void PrintText()
     {
-        isEnable = false;                                           // 초기 로드시 비활성화
-        objMgr = GameObject.Find("objManager");
-        // pointMgr = objMgr.GetComponent<PointMgr>();
-    }
-
-    // 메뉴바를 활성화 비활성화를 진행할 함수
-    public void OnMenuList()
-    {
-        // 활성화 여부에 따라서 자식 버튼의 활성화 비활성화 진행
-        if (isEnable)
-        {
-            isEnable = false;
-            for(int i = 1; i< this.transform.childCount; i++)
-            {
-                this.transform.GetChild(i).gameObject.SetActive(isEnable);
-            }
-        }
-        else
-        {
-            isEnable = true;
-            for (int i = 1; i < this.transform.childCount; i++)
-            {
-                this.transform.GetChild(i).gameObject.SetActive(isEnable);
-            }
-
-        }
-    }
-
-
-    // 게임 일시정지/시작
-    public void OnEnablePoint()
-    {
+        GameObject clickTarget = EventSystem.current.currentSelectedGameObject; // 클릭한 오브젝트를 가져옴
         
-    }
+        Transform[] children = clickTarget.GetComponentsInChildren<Transform>(); // 클릭한 오브젝트의 자식 오브젝트들을 가져옴
 
-    public void OnPointReset()
-    {
+        foreach(Transform child in children)
+        {
+            if(child.name == "Label")
+            {
+                Debug.Log(child.GetComponent<Text>().text); // 클릭한 오브젝트의 자식 오브젝트 중 Text 컴포넌트를 가진 오브젝트의 text를 가져옴
+            }
+        }
 
     }
 }
