@@ -74,3 +74,4 @@ crashlytics-build.properties
 /Assets/Resources/*
 /Assets/Script/Controllers/*
 /Assets/Script/Data/*
+/Assets/Script/Generators/*
