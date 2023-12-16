@@ -41,6 +41,7 @@ public class MainUIManager : MonoBehaviour
         uiCanvasGroup.blocksRaycasts = false;
     }
 
+    // UI를 서서히 나타내는 코루틴 함수
     private IEnumerator LoadUI()
     {
         float elapsedTime = 0f; // 경과 시간
