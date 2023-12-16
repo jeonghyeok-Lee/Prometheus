@@ -72,4 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /Assets/Resources/*
-/Assets/asset/*
+/Assets/Script/Controllers/*
+/Assets/Script/Data/*
